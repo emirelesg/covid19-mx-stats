@@ -69,7 +69,7 @@ function processData() {
   throw new Error(`Data not found.`);
 }
 
-function init() {
+module.exports = () => {
   return new Promise((resolve, reject) => {
     const server = app.listen(config.proxyPort);
     server.on('listening', () => {
@@ -81,11 +81,4 @@ function init() {
     });
     server.on('error', reject);
   });
-}
-
-// Export init function.
-// If the module is ran as a ascript then execute the init function.
-module.exports = init;
-// if (!module.parent) {
-//   init().then(console.log).catch(console.error);
-// }
+};
