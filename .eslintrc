@@ -1,0 +1,22 @@
+{
+  "env": {
+    "node": true
+  },
+  "extends": ["airbnb-base", "prettier"],
+  "rules": {
+    "prettier/prettier": [
+      "error", {
+        "singleQuote": true,
+        "printWidth": 80,
+        "tabWidth": 2,
+        "trailingComma": "es5"
+      }
+    ],
+    "no-console": "off",
+    "quotes": [2, "single", {
+      "avoidEscape": true,
+      "allowTemplateLiterals": true
+    }]
+  },
+  "plugins": ["import", "prettier"]
+}
