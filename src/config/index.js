@@ -13,7 +13,7 @@ module.exports = {
   // Names of files used.
   files: {
     stats: 'Stats.json',
-    latest: 'latest.json',
+    latest: 'latest.json'
   },
 
   // Pattern used in the report's names.
@@ -23,16 +23,16 @@ module.exports = {
   reports: [
     {
       name: 'Positive-Cases.pdf',
-      pattern: /positivos/g,
+      pattern: /positivos/g
     },
     {
       name: 'Suspected-Cases.pdf',
-      pattern: /sospechosos/g,
+      pattern: /sospechosos/g
     },
     {
       name: 'Daily-Report.pdf',
-      pattern: /comunicado/g,
-    },
+      pattern: /comunicado/g
+    }
   ],
 
   // Time in ms between downloads
@@ -42,15 +42,15 @@ module.exports = {
   ftp: {
     host: 'ftp.newtondreams.com',
     user: process.env.FTP_USERNAME,
-    password: process.env.FTP_PASSWORD,
+    password: process.env.FTP_PASSWORD
   },
 
   // list of files to deploy.
   ftpFiles: [
     {
       local: './data/latest.json',
-      remote: './covid19/api/stats.json',
-    },
+      remote: './covid19/api/stats.json'
+    }
   ],
 
   // Page where the pdf reports are found.
@@ -76,7 +76,7 @@ module.exports = {
   proxyDriverArgs: [
     'disable-gpu',
     'hide-scrollbars',
-    'ignore-certificate-errors',
+    'ignore-certificate-errors'
   ],
 
   // Type of browser used to open the proxyUrl.
@@ -89,7 +89,7 @@ module.exports = {
       'BS',
       'Baja California Sur',
       'baja california sur',
-      /baja california sur/g,
+      /baja california sur/g
     ],
     ['CDMX', 'Ciudad de México', 'ciudad de mexico', /ciudad de mexico/g],
     ['BC', 'Baja California', 'baja california', /baja california/g],
@@ -121,6 +121,6 @@ module.exports = {
     ['MX', 'México', 'mexico', /mexico/g],
     ['OA', 'Oaxaca', 'oaxaca', /oaxaca/g],
     ['PU', 'Puebla', 'puebla', /puebla/g],
-    ['SO', 'Sonora', 'sonora', /sonora/g],
-  ],
+    ['SO', 'Sonora', 'sonora', /sonora/g]
+  ]
 };

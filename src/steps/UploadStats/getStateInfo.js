@@ -24,7 +24,7 @@ app.use(
         console.log(`OK data intercepted!`);
       }
       return proxyResData;
-    },
+    }
   })
 );
 
