@@ -72,12 +72,16 @@ class Service {
   }
 
   start() {
-    this.mainJob.reschedule(this.mainJobInterval);
-    this.waitJob.reschedule(this.waitJobInterval);
     this.today = undefined;
     this.yesterday = undefined;
     this.retries = 0;
     utils.print.welcome(this.today, this.retries, this.completed);
+    if (args.date) {
+      this.onSync();
+    } else {
+      this.mainJob.reschedule(this.mainJobInterval);
+      this.waitJob.reschedule(this.waitJobInterval);
+    }
   }
 }
 
