@@ -517,7 +517,7 @@
       "confirmedDelta": 11,
       "deaths": 5,
       "suspected": 198,
-      "date": "2020-04-14"
+      "date": "2020-04-14T05:00:00.000Z"
     },
     {
       "key": "CDMX",
@@ -526,7 +526,7 @@
       "confirmedDelta": 119,
       "deaths": 92,
       "suspected": 2049,
-      "date": "2020-04-14"
+      "date": "2020-04-14T05:00:00.000Z"
     },
     {
       "key": "BC",
@@ -535,7 +535,7 @@
       "confirmedDelta": 44,
       "deaths": 28,
       "suspected": 590,
-      "date": "2020-04-14"
+      "date": "2020-04-14T05:00:00.000Z"
     },
     {
       "key": "SL",
@@ -544,7 +544,7 @@
       "confirmedDelta": 0,
       "deaths": 4,
       "suspected": 115,
-      "date": "2020-04-14"
+      "date": "2020-04-14T05:00:00.000Z"
     },
     {
       "key": "AG",
@@ -553,7 +553,7 @@
       "confirmedDelta": 10,
       "deaths": 1,
       "suspected": 66,
-      "date": "2020-04-14"
+      "date": "2020-04-14T05:00:00.000Z"
     },
     {
       "key": "QR",
@@ -562,7 +562,7 @@
       "confirmedDelta": 6,
       "deaths": 25,
       "suspected": 201,
-      "date": "2020-04-14"
+      "date": "2020-04-14T05:00:00.000Z"
     },
     {
       "key": "GJ",
@@ -571,7 +571,7 @@
       "confirmedDelta": 2,
       "deaths": 5,
       "suspected": 172,
-      "date": "2020-04-14"
+      "date": "2020-04-14T05:00:00.000Z"
     },
     {
       "key": "NL",
@@ -580,7 +580,7 @@
       "confirmedDelta": 4,
       "deaths": 5,
       "suspected": 1919,
-      "date": "2020-04-14"
+      "date": "2020-04-14T05:00:00.000Z"
     },
     {
       "key": "TM",
@@ -589,7 +589,7 @@
       "confirmedDelta": 2,
       "deaths": 3,
       "suspected": 178,
-      "date": "2020-04-14"
+      "date": "2020-04-14T05:00:00.000Z"
     },
     {
       "key": "CH",
@@ -598,7 +598,7 @@
       "confirmedDelta": 2,
       "deaths": 16,
       "suspected": 186,
-      "date": "2020-04-14"
+      "date": "2020-04-14T05:00:00.000Z"
     },
     {
       "key": "MI",
@@ -607,7 +607,7 @@
       "confirmedDelta": 5,
       "deaths": 11,
       "suspected": 163,
-      "date": "2020-04-14"
+      "date": "2020-04-14T05:00:00.000Z"
     },
     {
       "key": "QT",
@@ -616,7 +616,7 @@
       "confirmedDelta": 4,
       "deaths": 4,
       "suspected": 68,
-      "date": "2020-04-14"
+      "date": "2020-04-14T05:00:00.000Z"
     },
     {
       "key": "ZA",
@@ -625,7 +625,7 @@
       "confirmedDelta": 1,
       "deaths": 2,
       "suspected": 59,
-      "date": "2020-04-14"
+      "date": "2020-04-14T05:00:00.000Z"
     },
     {
       "key": "CM",
@@ -634,7 +634,7 @@
       "confirmedDelta": 4,
       "deaths": 2,
       "suspected": 41,
-      "date": "2020-04-14"
+      "date": "2020-04-14T05:00:00.000Z"
     },
     {
       "key": "CO",
@@ -643,7 +643,7 @@
       "confirmedDelta": 18,
       "deaths": 12,
       "suspected": 911,
-      "date": "2020-04-14"
+      "date": "2020-04-14T05:00:00.000Z"
     },
     {
       "key": "GR",
@@ -652,7 +652,7 @@
       "confirmedDelta": 11,
       "deaths": 6,
       "suspected": 142,
-      "date": "2020-04-14"
+      "date": "2020-04-14T05:00:00.000Z"
     },
     {
       "key": "TL",
@@ -661,7 +661,7 @@
       "confirmedDelta": 2,
       "deaths": 4,
       "suspected": 149,
-      "date": "2020-04-14"
+      "date": "2020-04-14T05:00:00.000Z"
     },
     {
       "key": "VE",
@@ -670,7 +670,7 @@
       "confirmedDelta": 12,
       "deaths": 5,
       "suspected": 418,
-      "date": "2020-04-14"
+      "date": "2020-04-14T05:00:00.000Z"
     },
     {
       "key": "CS",
@@ -679,7 +679,7 @@
       "confirmedDelta": 2,
       "deaths": 3,
       "suspected": 67,
-      "date": "2020-04-14"
+      "date": "2020-04-14T05:00:00.000Z"
     },
     {
       "key": "DG",
@@ -688,7 +688,7 @@
       "confirmedDelta": -1,
       "deaths": 3,
       "suspected": 89,
-      "date": "2020-04-14"
+      "date": "2020-04-14T05:00:00.000Z"
     },
     {
       "key": "HG",
@@ -697,7 +697,7 @@
       "confirmedDelta": 6,
       "deaths": 10,
       "suspected": 33,
-      "date": "2020-04-14"
+      "date": "2020-04-14T05:00:00.000Z"
     },
     {
       "key": "JA",
@@ -706,7 +706,7 @@
       "confirmedDelta": 6,
       "deaths": 11,
       "suspected": 620,
-      "date": "2020-04-14"
+      "date": "2020-04-14T05:00:00.000Z"
     },
     {
       "key": "MO",
@@ -715,7 +715,7 @@
       "confirmedDelta": 4,
       "deaths": 9,
       "suspected": 79,
-      "date": "2020-04-14"
+      "date": "2020-04-14T05:00:00.000Z"
     },
     {
       "key": "NA",
@@ -724,7 +724,7 @@
       "confirmedDelta": 0,
       "deaths": 4,
       "suspected": 36,
-      "date": "2020-04-14"
+      "date": "2020-04-14T05:00:00.000Z"
     },
     {
       "key": "SI",
@@ -733,7 +733,7 @@
       "confirmedDelta": 16,
       "deaths": 34,
       "suspected": 293,
-      "date": "2020-04-14"
+      "date": "2020-04-14T05:00:00.000Z"
     },
     {
       "key": "TB",
@@ -742,7 +742,7 @@
       "confirmedDelta": 39,
       "deaths": 19,
       "suspected": 343,
-      "date": "2020-04-14"
+      "date": "2020-04-14T05:00:00.000Z"
     },
     {
       "key": "YU",
@@ -751,7 +751,7 @@
       "confirmedDelta": 2,
       "deaths": 7,
       "suspected": 147,
-      "date": "2020-04-14"
+      "date": "2020-04-14T05:00:00.000Z"
     },
     {
       "key": "CL",
@@ -760,7 +760,7 @@
       "confirmedDelta": 0,
       "deaths": 0,
       "suspected": 26,
-      "date": "2020-04-14"
+      "date": "2020-04-14T05:00:00.000Z"
     },
     {
       "key": "MX",
@@ -769,7 +769,7 @@
       "confirmedDelta": 44,
       "deaths": 35,
       "suspected": 904,
-      "date": "2020-04-14"
+      "date": "2020-04-14T05:00:00.000Z"
     },
     {
       "key": "OA",
@@ -778,7 +778,7 @@
       "confirmedDelta": 2,
       "deaths": 5,
       "suspected": 60,
-      "date": "2020-04-14"
+      "date": "2020-04-14T05:00:00.000Z"
     },
     {
       "key": "PU",
@@ -787,7 +787,7 @@
       "confirmedDelta": 7,
       "deaths": 27,
       "suspected": 312,
-      "date": "2020-04-14"
+      "date": "2020-04-14T05:00:00.000Z"
     },
     {
       "key": "SO",
@@ -796,7 +796,7 @@
       "confirmedDelta": 1,
       "deaths": 9,
       "suspected": 158,
-      "date": "2020-04-14"
+      "date": "2020-04-14T05:00:00.000Z"
     }
   ]
 }

@@ -35,6 +35,9 @@ module.exports = {
     },
   ],
 
+  // Time in ms between downloads
+  downloadWaitTime: 1000,
+
   // Ftp deployment config.
   ftp: {
     host: 'ftp.newtondreams.com',

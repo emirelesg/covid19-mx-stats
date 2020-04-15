@@ -2,8 +2,8 @@ const proxy = require('express-http-proxy');
 const app = require('express')();
 const chrome = require('selenium-webdriver/chrome');
 const webdriver = require('selenium-webdriver');
-const { makeStringSafe } = require('./utils');
-const config = require('./config');
+const { makeStringSafe } = require('../../utils');
+const config = require('../../config');
 
 const remoteUrl = new URL(config.proxyUrl);
 const localUrl = new URL(
@@ -86,6 +86,6 @@ function init() {
 // Export init function.
 // If the module is ran as a ascript then execute the init function.
 module.exports = init;
-if (!module.parent) {
-  init().then(console.log).catch(console.error);
-}
+// if (!module.parent) {
+//   init().then(console.log).catch(console.error);
+// }
