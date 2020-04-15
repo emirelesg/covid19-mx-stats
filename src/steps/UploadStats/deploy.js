@@ -42,8 +42,8 @@ function chainedUpload(ftp, files) {
   });
 }
 
-module.exports = (files) => {
-  return new Promise((resolve, reject) => {
+module.exports = (files) =>
+  new Promise((resolve, reject) => {
     const ftp = new PromiseFtp();
     ftp
       .connect(config.ftp)
@@ -52,4 +52,3 @@ module.exports = (files) => {
       .catch(reject)
       .then(() => ftp.end());
   });
-};

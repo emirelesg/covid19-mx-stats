@@ -69,8 +69,8 @@ function processData() {
   throw new Error(`Data not found.`);
 }
 
-module.exports = () => {
-  return new Promise((resolve, reject) => {
+module.exports = () =>
+  new Promise((resolve, reject) => {
     const server = app.listen(config.proxyPort);
     server.on('listening', () => {
       openResource()
@@ -81,4 +81,3 @@ module.exports = () => {
     });
     server.on('error', reject);
   });
-};

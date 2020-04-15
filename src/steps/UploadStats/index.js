@@ -55,8 +55,8 @@ function saveStatsFile(stats, today) {
   );
 }
 
-module.exports = (today, yesterday) => {
-  return new Promise((resolve, reject) => {
+module.exports = (today, yesterday) =>
+  new Promise((resolve, reject) => {
     getStateInfo()
       .then((statesInfo) => {
         const prevStatsObj = utils.readJSON(
@@ -72,4 +72,3 @@ module.exports = (today, yesterday) => {
       .then(resolve)
       .catch(reject);
   });
-};

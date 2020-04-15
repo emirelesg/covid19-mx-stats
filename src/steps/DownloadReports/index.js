@@ -33,8 +33,8 @@ function chainedDownload(queue, today) {
   });
 }
 
-module.exports = (today) => {
-  return new Promise((resolve, reject) => {
+module.exports = (today) =>
+  new Promise((resolve, reject) => {
     const datePattern = new RegExp(today.format(config.reportDatePattern), 'g');
     console.log(`OK started downloading reports`);
     utils
@@ -62,4 +62,3 @@ module.exports = (today) => {
       .then(resolve)
       .catch(reject);
   });
-};
