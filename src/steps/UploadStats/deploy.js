@@ -42,7 +42,7 @@ function chainedUpload(ftp, files) {
   });
 }
 
-function init(files) {
+module.exports = (files) => {
   return new Promise((resolve, reject) => {
     const ftp = new PromiseFtp();
     ftp
@@ -52,11 +52,4 @@ function init(files) {
       .catch(reject)
       .then(() => ftp.end());
   });
-}
-
-// Export init function.
-// If the module is ran as a ascript then execute the init function.
-module.exports = init;
-// if (!module.parent) {
-//   init().then(console.log).catch(console.error);
-// }
+};
