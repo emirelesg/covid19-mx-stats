@@ -8,20 +8,20 @@ const url = require('url');
 const chalk = require('chalk');
 const config = require('./config');
 
-function printWelcome(today, retries, completed) {
+function printWelcome(today, retries, completed, isReady) {
   const formatedToday = today ? today.format('LL') : '-';
   const formatedRetries = today ? retries : '-';
   const formatedCompleted = completed ? completed.format('LL') : '-';
-  console.clear();
-  console.log(chalk`{cyan COVID-19 Mexico}`);
-  console.log(
-    chalk`Automatically update stats for {bold covid19.newtondreams.com}`
-  );
-  console.log();
-  console.log(chalk`Last completed date: {green.bold ${formatedCompleted}}`);
-  console.log(chalk`Processing data for: {cyan ${formatedToday}}`);
-  console.log(chalk`Retries: {cyan ${formatedRetries}}`);
-  console.log();
+  const discordStatus = isReady ? 'ON' : 'OFF';
+  const strings = [
+    chalk`{cyan COVID-19 Mexico}`,
+    chalk`Automatically update stats for {bold covid19.newtondreams.com}\n`,
+    chalk`Last completed date: {green.bold ${formatedCompleted}}`,
+    chalk`Processing data for: {cyan ${formatedToday}}`,
+    chalk`Retries: {cyan ${formatedRetries}}`,
+    chalk`Discord: {cyan ${discordStatus}}\n`
+  ];
+  return strings.join('\n');
 }
 
 function printSection(section, message, color, sameLine) {
@@ -41,7 +41,7 @@ function printError(err) {
 
 function printWait(date) {
   const currentDate = moment().format('MMMM Do YYYY, h:mm:ss a');
-  log(chalk`${currentDate} - {magenta ${date.fromNow()}}`);
+  return chalk`${currentDate} - {magenta ${date.fromNow()}}`;
 }
 
 function delay(ms) {
@@ -175,6 +175,7 @@ module.exports = {
   getLinks,
   delay,
   print: {
+    sameLine: log,
     welcome: printWelcome,
     section: printSection,
     error: printError,

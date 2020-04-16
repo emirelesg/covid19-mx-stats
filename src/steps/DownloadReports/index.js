@@ -1,6 +1,7 @@
 const fs = require('fs');
 const utils = require('../../utils');
 const config = require('../../config');
+const discord = require('../../config/discord');
 
 function chainedDownload(queue, today) {
   return new Promise((resolve, reject) => {
@@ -59,6 +60,7 @@ module.exports = (today) =>
         })
       )
       .then((queue) => chainedDownload(queue, today))
+      .then(() => discord.send(`Reports downloaded.`))
       .then(resolve)
       .catch(reject);
   });

@@ -1,5 +1,6 @@
 const git = require('simple-git/promise')();
 const utils = require('../../utils');
+const discord = require('../../config/discord');
 
 module.exports = (date) =>
   new Promise((resolve, reject) => {
@@ -33,6 +34,7 @@ module.exports = (date) =>
       .then(() => git.commit(message))
       .then(() => git.push('origin', 'master'))
       .then(() => console.log('OK pushed files to git'))
+      .then(() => discord.send('Pushed to Git.'))
       .then(resolve)
       .catch(reject);
   });

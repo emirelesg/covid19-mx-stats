@@ -2,6 +2,7 @@ const utils = require('../../utils');
 const config = require('../../config');
 const getStateInfo = require('./getStateInfo');
 const deploy = require('./deploy');
+const discord = require('../../config/discord');
 
 function makeStats(prevStats, { confirmed, suspected, deaths }, today) {
   const output = {};
@@ -71,6 +72,7 @@ module.exports = (today, yesterday) =>
       })
       .then((latestStatsObj) => saveStatsFile(latestStatsObj, today))
       .then(() => deploy(config.ftpFiles))
+      .then(() => discord.send(`Stats updated and deployed.`))
       .then(resolve)
       .catch(reject);
   });

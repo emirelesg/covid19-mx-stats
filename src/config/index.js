@@ -14,6 +14,12 @@ module.exports = {
     timeout: 5000
   },
 
+  // Discord.
+  discord: {
+    token: process.env.DISCORD_TOKEN,
+    channel: process.env.DISCORD_CHANNEL
+  },
+
   // Retry timeout in seconds.
   retryTimeout: 150,
 

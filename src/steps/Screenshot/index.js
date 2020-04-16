@@ -3,6 +3,7 @@ const webdriver = require('selenium-webdriver');
 const fs = require('fs');
 const moment = require('moment');
 const config = require('../../config');
+const discord = require('../../config/discord');
 const utils = require('../../utils');
 const args = require('../../config/args');
 
@@ -62,7 +63,10 @@ async function makeScreenshot(date, url) {
 
 module.exports = (date, url) =>
   new Promise((resolve, reject) => {
-    makeScreenshot(date, url).then(resolve).catch(reject);
+    makeScreenshot(date, url)
+      .then(() => discord.send('Took screenshot.'))
+      .then(resolve)
+      .catch(reject);
   });
 
 if (!module.parent) {
