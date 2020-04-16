@@ -1,6 +1,5 @@
 const git = require('simple-git/promise')();
 const utils = require('../../utils');
-// const moment = require('moment');
 
 module.exports = (date) =>
   new Promise((resolve, reject) => {
@@ -37,5 +36,3 @@ module.exports = (date) =>
       .then(resolve)
       .catch(reject);
   });
-
-// module.exports(moment()).then(console.log).catch(console.error);
