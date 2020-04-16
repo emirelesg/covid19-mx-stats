@@ -7,7 +7,12 @@ const parser = new ArgumentParser({
 });
 
 parser.addArgument(['-d', '--date'], {
-  help: 'date to try to update',
+  help: 'date to work on',
+  required: false
+});
+
+parser.addArgument(['-l', '--localhost'], {
+  help: 'use localhost for screenshots',
   required: false
 });
 

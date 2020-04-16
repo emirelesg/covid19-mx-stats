@@ -6,6 +6,7 @@ const args = require('./config/args');
 const UploadStats = require('./steps/UploadStats');
 const DownloadReports = require('./steps/DownloadReports');
 const PushToGit = require('./steps/PushToGit');
+const Screenshot = require('./steps/Screenshot');
 
 class Service {
   constructor() {
@@ -45,7 +46,14 @@ class Service {
         DownloadReports,
         this.today
       );
-      c[2] = await utils.step(3, 'Push to Git.', c[2], PushToGit, this.today);
+      c[2] = await utils.step(
+        3,
+        'Take Screenshot.',
+        c[2],
+        Screenshot,
+        this.today
+      );
+      c[3] = await utils.step(4, 'Push to Git.', c[3], PushToGit, this.today);
       this.completed = this.today;
     } catch (err) {
       this.retries += 1;
@@ -59,7 +67,7 @@ class Service {
     this.stop();
     this.today = args.date ? moment(args.date) : moment();
     this.yesterday = moment(this.today).subtract(1, 'day');
-    await this.onWork([false, false, false]);
+    await this.onWork([false, false, false, false]);
     if (!args.date) this.start();
   }
 

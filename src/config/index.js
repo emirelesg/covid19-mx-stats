@@ -1,6 +1,19 @@
 require('dotenv').config();
 
 module.exports = {
+  // Url of the site.
+  siteUrl: 'https://covid19.newtondreams.com',
+
+  // Properties for making the screenshot.
+  screenshot: {
+    width: 1280,
+    height: 739,
+    scroll: 235,
+    scale: 2,
+    waitFor: '#map',
+    timeout: 5000
+  },
+
   // Retry timeout in seconds.
   retryTimeout: 150,
 
@@ -13,7 +26,8 @@ module.exports = {
   // Names of files used.
   files: {
     stats: 'Stats.json',
-    latest: 'latest.json'
+    latest: 'latest.json',
+    screenshot: 'Screenshot.png'
   },
 
   // Pattern used in the report's names.
