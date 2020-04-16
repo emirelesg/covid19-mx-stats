@@ -27,7 +27,8 @@ module.exports = {
   files: {
     stats: 'Stats.json',
     latest: 'latest.json',
-    screenshot: 'Screenshot.png'
+    screenshot: 'Screenshot.png',
+    latestScreenshot: 'latest.png'
   },
 
   // Pattern used in the report's names.

@@ -18,7 +18,10 @@ const script = `
 `;
 
 async function makeScreenshot(date, url) {
-  const filename = utils.getFileByDate(date, config.files.screenshot);
+  const files = [
+    utils.getFileByDate(date, config.files.screenshot),
+    utils.getLatestScreenshotFile()
+  ];
   const driverOptions = new chrome.Options()
     .headless()
     .windowSize({
@@ -43,13 +46,18 @@ async function makeScreenshot(date, url) {
     await driver.executeScript(script);
     const png = await driver.takeScreenshot();
     console.log(`OK took screenshot`);
-    fs.writeFileSync(filename, png, 'base64');
-    console.log(`OK saved screenshot to ${filename}`);
+
+    // Write screenshot to all locations.
+    files.forEach((file) => {
+      fs.writeFileSync(file, png, 'base64');
+      console.log(`OK saved screenshot to ${file}`);
+    });
   } catch (err) {
     await driver.quit();
     throw err;
   }
   await driver.quit();
+  return true;
 }
 
 module.exports = (date, url) =>

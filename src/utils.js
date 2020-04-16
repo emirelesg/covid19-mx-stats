@@ -135,6 +135,10 @@ function getLatestStatsFile() {
   return path.join(config.outputDir, config.files.latest);
 }
 
+function getLatestScreenshotFile() {
+  return path.join(config.outputDir, config.files.latestScreenshot);
+}
+
 function getDirByDate(date) {
   return path.join(config.outputDir, date.format(config.outputDatePattern));
 }
@@ -165,6 +169,7 @@ module.exports = {
   getFileByDate,
   getStatsFileByDate,
   getLatestStatsFile,
+  getLatestScreenshotFile,
   countdownPromise,
   download,
   getLinks,
