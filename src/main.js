@@ -45,7 +45,7 @@ class Service {
         DownloadReports,
         this.today
       );
-      c[2] = await utils.step(3, 'Push to Git', c[2], PushToGit, this.today);
+      c[2] = await utils.step(3, 'Push to Git.', c[2], PushToGit, this.today);
       this.completed = this.today;
     } catch (err) {
       this.retries += 1;
