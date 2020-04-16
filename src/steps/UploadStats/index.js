@@ -36,12 +36,10 @@ function makeStats(prevStats, { confirmed, suspected, deaths }, today) {
 }
 
 function areStatsDifferent(latest, prev) {
-  const latestTimeseries = latest.timeseries[latest.timeseries.length - 1];
-  const prevTimeseries = prev.timeseries[prev.timeseries.length - 1];
   return (
-    latestTimeseries.confirmed !== prevTimeseries.confirmed &&
-    latestTimeseries.suspected !== prevTimeseries.suspected &&
-    latestTimeseries.deaths !== prevTimeseries.deaths
+    latest.confirmed !== prev.confirmed &&
+    latest.suspected !== prev.suspected &&
+    latest.deaths !== prev.deaths
   );
 }
 
@@ -63,9 +61,13 @@ module.exports = (today, yesterday) =>
           utils.getStatsFileByDate(yesterday)
         );
         const latestStatsObj = makeStats(prevStatsObj, statesInfo, today);
-        if (areStatsDifferent(latestStatsObj, prevStatsObj))
+        const latestTimeseries = latestStatsObj.timeseries.slice(-1)[0];
+        const prevTimeseries = prevStatsObj.timeseries.slice(-1)[0];
+        if (areStatsDifferent(latestTimeseries, prevTimeseries))
           return latestStatsObj;
-        throw new Error(`stats look to be the same from yesterday.`);
+        throw new Error(`stats look to be the same from yesterday.
+          yesterday: ${JSON.stringify(prevTimeseries).replace(/,/g, ', ')}
+          today:     ${JSON.stringify(latestTimeseries).replace(/,/g, ', ')}`);
       })
       .then((latestStatsObj) => saveStatsFile(latestStatsObj, today))
       .then(() => deploy(config.ftpFiles))
