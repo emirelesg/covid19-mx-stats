@@ -8,6 +8,7 @@ module.exports = (date) =>
     const dir = utils.getDirByDate(date);
     const dirRegex = new RegExp(dir, 'g');
     const latestFile = utils.getLatestStatsFile();
+    const latestScreenshot = utils.getLatestScreenshotFile();
     git
       .checkIsRepo()
       .then((isRepo) => {
@@ -18,7 +19,9 @@ module.exports = (date) =>
         const files = status.files
           .filter(
             (f, i, arr) =>
-              (f.path.match(dirRegex) || f.path === latestFile) &&
+              (f.path.match(dirRegex) ||
+                f.path === latestFile ||
+                f.path === latestScreenshot) &&
               arr.indexOf(f) === i
           )
           .map((f) => f.path);

@@ -79,13 +79,13 @@ module.exports = {
     'https://www.gob.mx/salud/documentos/coronavirus-covid-19-comunicado-tecnico-diario-238449',
 
   // Page loaded where data is intercepted.
-  proxyUrl: 'https://ncov.sinave.gob.mx/Mapa.aspx',
+  proxyUrl: 'https://ncov.sinave.gob.mx',
 
   // Regex pattern of the resource to intercept.
   proxyInterceptResource: /Grafica22/g,
 
   // Wait for an element to load that indicates the data has been for sure loaded.
-  proxyWaitFor: '#chart21 svg',
+  proxyWaitFor: '#chart21 div svg',
 
   // In this time the element defined above must be rendered.
   proxyTimeout: 10000,
