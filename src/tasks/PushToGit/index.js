@@ -30,14 +30,15 @@ module.exports = async (log, date) => {
   } else {
     log('OK the following files changed:');
     log(files);
+    if (!dryRun) {
+      await git.add(files);
+      await git.commit(message);
+      await git.push('origin', 'master');
+      if (files.length > 0) {
+        log('OK pushed files to git');
+      }
+    }
   }
-
-  if (!dryRun) {
-    await git.add(files);
-    await git.commit(message);
-    await git.push('origin', 'master');
-  }
-  log('OK pushed files to git');
 
   return true;
 };

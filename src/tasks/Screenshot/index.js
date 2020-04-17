@@ -47,8 +47,9 @@ module.exports = async (log, today, yesterday) => {
     .setChromeOptions(driverOptions)
     .build();
   try {
+    log(`Opening target ${url}`);
     await driver.get(url);
-    log(`Opened ${url}`);
+    log(`Waiting for element "${config.screenshot.waitFor}" to load`);
     await driver.wait(
       webdriver.until.elementLocated(
         webdriver.By.css(config.screenshot.waitFor)

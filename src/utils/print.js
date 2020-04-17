@@ -8,8 +8,8 @@ function fixedLengthString(s) {
 
 function sectionFn(name, color) {
   const coloredName = chalk[color].bold(fixedLengthString(name));
-  return (message) => {
-    console.log(coloredName, message);
+  return (...messages) => {
+    console.log(coloredName, ...messages);
   };
 }
 

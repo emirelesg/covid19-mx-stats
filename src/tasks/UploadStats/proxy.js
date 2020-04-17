@@ -36,17 +36,20 @@ app.use(
   })
 );
 
-async function openResource() {
+async function openResource(log) {
   const driver = await new webdriver.Builder()
     .forBrowser(config.proxyBrowser)
     .setChromeOptions(driverOptions)
     .build();
   try {
+    log(`Opening target ${remoteUrl.href}`);
     await driver.get(localUrl.href);
+    log(`Waiting for element "${config.proxyWaitFor}" to load`);
     await driver.wait(
       webdriver.until.elementLocated(webdriver.By.css(config.proxyWaitFor)),
       config.proxyTimeout
     );
+    log(`Element "${config.proxyWaitFor}" loaded`);
   } finally {
     await driver.quit();
   }
@@ -54,7 +57,8 @@ async function openResource() {
 
 function processData(log) {
   if (rawData) {
-    log(`Data intercepted by proxy!`);
+    log(`Data intercepted!`);
+    log(`Processing intercepted data`);
     const o = { confirmed: {}, suspected: {}, deaths: {} };
     JSON.parse(JSON.parse(rawData).d).forEach((rawState) => {
       if (rawState.length >= 8) {
@@ -67,18 +71,19 @@ function processData(log) {
           o.deaths[stateMatch[0]] = parseInt(rawState[7], 10);
         }
       } else {
-        throw new Error(`Uknown state data format: ${rawState}`);
+        throw new Error(`Unknown state data format: ${rawState}`);
       }
     });
     return o;
   }
-  throw new Error(`Data not found.`);
+  throw new Error(`Data was not intercepted by the proxy`);
 }
 
 module.exports = async (log) => {
   const server = app.listen(config.proxyPort);
+  log(`Starting proxy at ${localUrl.href}`);
   await once(server, 'listening');
-  await openResource();
+  await openResource(log);
   server.close();
   return processData(log);
 };
