@@ -1,8 +1,9 @@
-const utils = require('../../utils');
+const utils = require('../../utils/utils');
 const config = require('../../config');
 const getStateInfo = require('./getStateInfo');
 const deploy = require('./deploy');
-const discord = require('../../config/discord');
+
+const { dryRun } = config.args;
 
 function makeStats(prevStats, { confirmed, suspected, deaths }, today) {
   const output = {};
@@ -44,35 +45,30 @@ function areStatsDifferent(latest, prev) {
   );
 }
 
-function saveStatsFile(stats, today) {
-  utils.makeFolder(utils.getDirByDate(today));
+function saveStatsFile(log, stats, today) {
+  if (!dryRun) utils.makeFolder(utils.getDirByDate(today));
   [utils.getStatsFileByDate(today), utils.getLatestStatsFile()].forEach(
     (file) => {
-      console.log(`OK stats written to ${file}.`);
-      utils.saveJSON(file, stats);
+      log(`Stats written to ${file}.`);
+      if (!dryRun) utils.saveJSON(file, stats);
     }
   );
 }
 
-module.exports = (today, yesterday) =>
-  new Promise((resolve, reject) => {
-    getStateInfo()
-      .then((statesInfo) => {
-        const prevStatsObj = utils.readJSON(
-          utils.getStatsFileByDate(yesterday)
-        );
-        const latestStatsObj = makeStats(prevStatsObj, statesInfo, today);
-        const latestTimeseries = latestStatsObj.timeseries.slice(-1)[0];
-        const prevTimeseries = prevStatsObj.timeseries.slice(-1)[0];
-        if (areStatsDifferent(latestTimeseries, prevTimeseries))
-          return latestStatsObj;
-        throw new Error(`stats look to be the same from yesterday.
-          yesterday: ${JSON.stringify(prevTimeseries).replace(/,/g, ', ')}
-          today:     ${JSON.stringify(latestTimeseries).replace(/,/g, ', ')}`);
-      })
-      .then((latestStatsObj) => saveStatsFile(latestStatsObj, today))
-      .then(() => deploy(config.ftpFiles))
-      .then(() => discord.send(`Stats updated and deployed.`))
-      .then(resolve)
-      .catch(reject);
-  });
+module.exports = async (log, today, yesterday) => {
+  const statesInfo = await getStateInfo(log);
+
+  const prevStatsObj = utils.readJSON(utils.getStatsFileByDate(yesterday));
+  const latestStatsObj = makeStats(prevStatsObj, statesInfo, today);
+  const latestTimeseries = latestStatsObj.timeseries.slice(-1)[0];
+  const prevTimeseries = prevStatsObj.timeseries.slice(-1)[0];
+  if (!areStatsDifferent(latestTimeseries, prevTimeseries)) {
+    throw new Error(`Stats look to be the same from yesterday.
+    yesterday: ${JSON.stringify(prevTimeseries).replace(/,/g, ', ')}
+    today:     ${JSON.stringify(latestTimeseries).replace(/,/g, ', ')}`);
+  }
+
+  saveStatsFile(log, latestStatsObj, today);
+  await deploy(log, config.ftpFiles);
+  return true;
+};

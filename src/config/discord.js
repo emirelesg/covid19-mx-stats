@@ -1,6 +1,8 @@
 const Discord = require('discord.js');
 const config = require('./index');
 
+const { dryRun } = config.args;
+
 class Bot {
   constructor() {
     this.isReady = false;
@@ -24,7 +26,7 @@ class Bot {
   // }
 
   send(message) {
-    if (this.channel && message) {
+    if (this.channel && message && !dryRun) {
       return this.channel.send(message);
     }
     return Promise.resolve();

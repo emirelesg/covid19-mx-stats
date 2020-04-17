@@ -2,14 +2,23 @@ const proxy = require('express-http-proxy');
 const app = require('express')();
 const chrome = require('selenium-webdriver/chrome');
 const webdriver = require('selenium-webdriver');
-const { makeStringSafe } = require('../../utils');
+const { once } = require('events');
+const { makeStringSafe } = require('../../utils/utils');
 const config = require('../../config');
 
+// Stores the configured urls for proxy and remote.
 const remoteUrl = new URL(config.proxyUrl);
 const localUrl = new URL(
   remoteUrl.pathname,
   `http://localhost:${config.proxyPort}`
 );
+
+// Options for running a headless chrome.
+const driverOptions = new chrome.Options()
+  .headless()
+  .addArguments(...config.proxyDriverArgs);
+
+// Where the incercepted data will be stored.
 let rawData;
 
 app.use(
@@ -21,7 +30,6 @@ app.use(
       if (userReq.url.match(config.proxyInterceptResource)) {
         const response = proxyResData.toString('utf8');
         rawData = response;
-        console.log(`OK data intercepted!`);
       }
       return proxyResData;
     }
@@ -29,9 +37,6 @@ app.use(
 );
 
 async function openResource() {
-  const driverOptions = new chrome.Options()
-    .headless()
-    .addArguments(...config.proxyDriverArgs);
   const driver = await new webdriver.Builder()
     .forBrowser(config.proxyBrowser)
     .setChromeOptions(driverOptions)
@@ -47,8 +52,9 @@ async function openResource() {
   }
 }
 
-function processData() {
+function processData(log) {
   if (rawData) {
+    log(`Data intercepted by proxy!`);
     const o = { confirmed: {}, suspected: {}, deaths: {} };
     JSON.parse(JSON.parse(rawData).d).forEach((rawState) => {
       if (rawState.length >= 8) {
@@ -69,15 +75,10 @@ function processData() {
   throw new Error(`Data not found.`);
 }
 
-module.exports = () =>
-  new Promise((resolve, reject) => {
-    const server = app.listen(config.proxyPort);
-    server.on('listening', () => {
-      openResource()
-        .then(processData)
-        .then(resolve)
-        .catch(reject)
-        .then(() => server.close());
-    });
-    server.on('error', reject);
-  });
+module.exports = async (log) => {
+  const server = app.listen(config.proxyPort);
+  await once(server, 'listening');
+  await openResource();
+  server.close();
+  return processData(log);
+};

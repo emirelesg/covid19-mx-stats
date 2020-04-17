@@ -1,77 +1,69 @@
 const chrome = require('selenium-webdriver/chrome');
 const webdriver = require('selenium-webdriver');
 const fs = require('fs');
-const moment = require('moment');
 const config = require('../../config');
-const discord = require('../../config/discord');
-const utils = require('../../utils');
-const args = require('../../config/args');
+const utils = require('../../utils/utils');
 
+const { dryRun } = config.args;
+
+// Deines the dimensions of the screenshot.
 const width = config.screenshot.width * config.screenshot.scale;
 const height = config.screenshot.height * config.screenshot.scale;
 const scroll = Math.round(config.screenshot.scroll * config.screenshot.scale);
 const scalePercent = Math.round(config.screenshot.scale * 100);
 
+// Options for running a headless chrome.
+const driverOptions = new chrome.Options()
+  .headless()
+  .windowSize({
+    width,
+    height
+  })
+  .addArguments(...config.proxyDriverArgs);
 // Script to adjust the zoom level and scroll to area of interest.
 const script = `
   document.body.style.zoom="${scalePercent}%";
   window.scrollTo(0, ${scroll});
 `;
 
-async function makeScreenshot(date, url) {
+// Saves the screenshot to the correct folder.
+// TODO: only write to the latest file if it is really the latest.
+function saveScreenshot(log, date, png) {
   const files = [
     utils.getFileByDate(date, config.files.screenshot),
     utils.getLatestScreenshotFile()
   ];
-  const driverOptions = new chrome.Options()
-    .headless()
-    .windowSize({
-      width,
-      height
-    })
-    .addArguments(...config.proxyDriverArgs);
+  files.forEach((file) => {
+    if (!dryRun) fs.writeFileSync(file, png, 'base64');
+    log(`Saved screenshot to ${file}`);
+  });
+}
+
+// Open the provided url and make a screenshot.
+module.exports = async (log, today, yesterday) => {
+  const url = config.args.localhost || config.siteUrl;
   const driver = await new webdriver.Builder()
     .forBrowser(config.proxyBrowser)
     .setChromeOptions(driverOptions)
     .build();
   try {
-    await driver.get(url || config.siteUrl);
-    console.log(`OK opened ${url || config.siteUrl}`);
+    await driver.get(url);
+    log(`Opened ${url}`);
     await driver.wait(
       webdriver.until.elementLocated(
         webdriver.By.css(config.screenshot.waitFor)
       ),
       config.screenshot.timeout
     );
-    console.log(`OK element ${config.screenshot.waitFor} loaded`);
+    log(`Element ${config.screenshot.waitFor} loaded`);
     await driver.executeScript(script);
     const png = await driver.takeScreenshot();
-    console.log(`OK took screenshot`);
-
-    // Write screenshot to all locations.
-    files.forEach((file) => {
-      fs.writeFileSync(file, png, 'base64');
-      console.log(`OK saved screenshot to ${file}`);
-    });
+    log(`Took screenshot`);
+    saveScreenshot(log, today, png);
   } catch (err) {
     await driver.quit();
     throw err;
   }
   await driver.quit();
   return true;
-}
-
-module.exports = (date, url) =>
-  new Promise((resolve, reject) => {
-    makeScreenshot(date, url)
-      .then(() => discord.send('Took screenshot.'))
-      .then(resolve)
-      .catch(reject);
-  });
-
-if (!module.parent) {
-  const date = args.date ? moment(args.date) : moment();
-  const url = args.localhost || config.siteUrl;
-  console.log(`Making screenshot for ${date.format('LL')}`);
-  module.exports(date, url).then(console.log).catch(console.error);
-}
+};

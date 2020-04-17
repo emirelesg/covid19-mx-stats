@@ -1,8 +1,19 @@
 require('dotenv').config();
+const argv = require('minimist')(process.argv.slice(2));
 
 module.exports = {
   // Url of the site.
   siteUrl: 'https://covid19.newtondreams.com',
+
+  // Defines the args.
+  args: {
+    // -d work on a specific date.
+    date: argv.d,
+    // -l use a different address for screenshots.
+    localhost: argv.l,
+    // --dry-run do not write anything.
+    dryRun: argv['dry-run'] || false
+  },
 
   // Properties for making the screenshot.
   screenshot: {

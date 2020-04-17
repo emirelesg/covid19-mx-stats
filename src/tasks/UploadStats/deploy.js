@@ -3,7 +3,9 @@ const path = require('path');
 const fs = require('fs');
 const config = require('../../config');
 
-function chainedUpload(ftp, files) {
+const { dryRun } = config.args;
+
+function chainedUpload(log, ftp, files) {
   return new Promise((resolve, reject) => {
     // Allows for chaining promises.
     let chain = Promise.resolve();
@@ -18,8 +20,8 @@ function chainedUpload(ftp, files) {
         // Upload files. Any errors are stored.
         chain = chain
           .then(() => {
-            console.log(`OK uploading ${local} to ${remote}`);
-            return ftp.put(fullpath, remote);
+            log(`Uploading ${local} to ${remote}`);
+            return dryRun ? Promise.resolve() : ftp.put(fullpath, remote);
           })
           .catch(() => uploadErrors.push(local));
       } else {
@@ -42,13 +44,10 @@ function chainedUpload(ftp, files) {
   });
 }
 
-module.exports = (files) =>
-  new Promise((resolve, reject) => {
-    const ftp = new PromiseFtp();
-    ftp
-      .connect(config.ftp)
-      .then(() => chainedUpload(ftp, files))
-      .then(resolve)
-      .catch(reject)
-      .then(() => ftp.end());
-  });
+module.exports = async (log, files) => {
+  const ftp = new PromiseFtp();
+  await ftp.connect(config.ftp);
+  await chainedUpload(log, ftp, files);
+  await ftp.end();
+  return true;
+};
