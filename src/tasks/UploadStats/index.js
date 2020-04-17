@@ -1,9 +1,32 @@
+const PromiseFtp = require('promise-ftp');
+const path = require('path');
+const fs = require('fs');
 const utils = require('../../utils/utils');
 const config = require('../../config');
 const proxy = require('./proxy');
-const deploy = require('./deploy');
 
 const { dryRun } = config.args;
+
+async function deploy(log, files) {
+  const ftp = new PromiseFtp();
+  await ftp.connect(config.ftp);
+  await files.reduce(
+    (previous, { local, remote }) =>
+      previous.then(() => {
+        const fullpath = path.resolve(local);
+        if (!fs.existsSync(fullpath) || !fs.lstatSync(fullpath).isFile()) {
+          throw new Error(
+            `Failed to upload. File does not exist or is a folder: ${local}`
+          );
+        }
+        log(`Uploading ${local} to ${remote}`);
+        return dryRun ? Promise.resolve() : ftp.put(fullpath, remote);
+      }),
+    Promise.resolve()
+  );
+  await ftp.end();
+  return true;
+}
 
 function makeStats(prevStats, { confirmed, suspected, deaths }, today) {
   const output = {};
@@ -45,6 +68,7 @@ function areStatsDifferent(latest, prev) {
   );
 }
 
+// TODO: only write to the latest file if it is really the latest.
 function saveStatsFile(log, stats, today) {
   if (!dryRun) utils.makeFolder(utils.getDirByDate(today));
   [utils.getStatsFileByDate(today), utils.getLatestStatsFile()].forEach(
