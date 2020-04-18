@@ -31,7 +31,7 @@ const script = `
 function saveScreenshot(log, date, png) {
   const files = [
     utils.getFileByDate(date, config.files.screenshot),
-    utils.getLatestScreenshotFile()
+    utils.getLatestScreenshot()
   ];
   files.forEach((file) => {
     if (!dryRun) fs.writeFileSync(file, png, 'base64');

@@ -4,6 +4,7 @@ const fs = require('fs');
 const utils = require('../../utils/utils');
 const config = require('../../config');
 const proxy = require('./proxy');
+const stats = require('./stats');
 
 const { dryRun } = config.args;
 
@@ -28,56 +29,6 @@ async function deploy(log, files) {
   return true;
 }
 
-function makeStats(prevStats, { confirmed, suspected, deaths }, today) {
-  const output = {};
-  output.timeseries = [
-    ...prevStats.timeseries,
-    {
-      date: today.format(config.outputDatePattern),
-      confirmed: Object.values(confirmed).reduce((a, o) => a + o, 0),
-      deaths: Object.values(deaths).reduce((a, o) => a + o, 0),
-      suspected: Object.values(suspected).reduce((a, o) => a + o, 0)
-    }
-  ];
-  output.states = config.states.reduce(
-    (obj, [key, name]) => ({
-      ...obj,
-      [key]: {
-        name,
-        confirmed: confirmed[key] || 0,
-        confirmedDelta: (confirmed[key] || 0) - prevStats.states[key].confirmed,
-        deaths: deaths[key] || 0,
-        suspected: suspected[key] || 0
-      }
-    }),
-    {}
-  );
-  output.statesAsArray = Object.entries(output.states).map(([key, values]) => ({
-    key,
-    ...values,
-    date: today
-  }));
-  return output;
-}
-
-function areStatsDifferent(latest, prev) {
-  return (
-    latest.confirmed !== prev.confirmed &&
-    latest.suspected !== prev.suspected &&
-    latest.deaths !== prev.deaths
-  );
-}
-
-// TODO: only write to the latest file if it is really the latest.
-function saveStatsFile(log, stats, today) {
-  const files = [utils.getStatsFileByDate(today), utils.getLatestStatsFile()];
-  if (!dryRun) utils.makeFolder(utils.getDirByDate(today));
-  files.forEach((file) => {
-    if (!dryRun) utils.saveJSON(file, stats);
-    log(`Saved stats to ${file}`);
-  });
-}
-
 function processData(log, rawData) {
   log(`Processing intercepted data`);
   const o = { confirmed: {}, suspected: {}, deaths: {} };
@@ -99,21 +50,27 @@ function processData(log, rawData) {
 }
 
 module.exports = async (log, today, yesterday) => {
+  // Intercept data from map and process it to obtain data about each state.
   const rawStatesInfo = await proxy(log);
-  const statesInfo = processData(log, rawStatesInfo);
+  const processedData = processData(log, rawStatesInfo);
+
+  // Create a stats object and validate that the received data is newer.
   log('Creating stats object with received data');
-  const prevStatsObj = utils.readJSON(utils.getStatsFileByDate(yesterday));
-  const latestStatsObj = makeStats(prevStatsObj, statesInfo, today);
-  const latestTimeseries = latestStatsObj.timeseries.slice(-1)[0];
-  const prevTimeseries = prevStatsObj.timeseries.slice(-1)[0];
-  if (!areStatsDifferent(latestTimeseries, prevTimeseries)) {
-    throw new Error(`Stats look to be the same from yesterday
-    yesterday: ${JSON.stringify(prevTimeseries).replace(/,/g, ', ')}
-    today:     ${JSON.stringify(latestTimeseries).replace(/,/g, ', ')}`);
-  }
-  log('Stats look to be different from yesterday');
-  log(latestTimeseries);
-  saveStatsFile(log, latestStatsObj, today);
+  const statsObj = stats.make(today, yesterday, processedData);
+  stats.compare(log, statsObj, yesterday);
+
+  // Make output folder if it does not exist.
+  if (!dryRun) utils.makeFolder(utils.getDirByDate(today));
+
+  // Save stats object.
+  stats.save(log, today, statsObj);
+
+  // Create a stats by state object and save it.
+  const statsByStateObj = stats.makeByState(today, yesterday);
+  stats.saveByState(log, today, statsByStateObj);
+
+  // Deploy stats and stats by state to server.
   await deploy(log, config.ftpFiles);
+
   return true;
 };

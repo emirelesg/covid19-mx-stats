@@ -42,8 +42,10 @@ module.exports = {
 
   // Names of files used.
   files: {
+    statsByState: 'StatsByState.json',
     stats: 'Stats.json',
     latest: 'latest.json',
+    latestByState: 'latestByState.json',
     screenshot: 'Screenshot.png',
     latestScreenshot: 'latest.png'
   },
@@ -82,6 +84,10 @@ module.exports = {
     {
       local: './data/latest.json',
       remote: './covid19/api/stats.json'
+    },
+    {
+      local: './data/latestByState.json',
+      remote: './covid19/api/statsByState.json'
     }
   ],
 

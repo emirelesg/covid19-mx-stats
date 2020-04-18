@@ -80,8 +80,8 @@ function readJSON(file) {
   return JSON.parse(data);
 }
 
-function saveJSON(file, obj) {
-  const data = `${JSON.stringify(obj, null, 2)}\n`;
+function saveJSON(file, obj, minify) {
+  const data = `${JSON.stringify(obj, null, minify ? 0 : 2)}\n`;
   fs.writeFileSync(file, data, {
     encoding: 'utf-8'
   });
@@ -91,11 +91,15 @@ function makeFolder(folder) {
   if (!fs.existsSync(folder)) fs.mkdirSync(folder);
 }
 
-function getLatestStatsFile() {
+function getLatestStats() {
   return path.join(config.outputDir, config.files.latest);
 }
 
-function getLatestScreenshotFile() {
+function getLatestStatsByState() {
+  return path.join(config.outputDir, config.files.latestByState);
+}
+
+function getLatestScreenshot() {
   return path.join(config.outputDir, config.files.latestScreenshot);
 }
 
@@ -107,8 +111,12 @@ function getFileByDate(date, filename) {
   return path.join(getDirByDate(date), filename);
 }
 
-function getStatsFileByDate(date) {
+function getStatsByDate(date) {
   return getFileByDate(date, config.files.stats);
+}
+
+function getStatsByStateByDate(date) {
+  return getFileByDate(date, config.files.statsByState);
 }
 
 function execTask(number, desc, isComplete, callback, ...args) {
@@ -121,7 +129,7 @@ function execTask(number, desc, isComplete, callback, ...args) {
 }
 
 function isDateLatest(today) {
-  const latestStats = readJSON(getLatestStatsFile());
+  const latestStats = readJSON(getLatestStats());
   const { date } = latestStats.timeseries.slice(-1)[0];
   const latest = moment(date);
   return moment(today.format(config.outputDatePattern)).isSameOrAfter(latest);
@@ -135,9 +143,11 @@ module.exports = {
   isDateLatest,
   getDirByDate,
   getFileByDate,
-  getStatsFileByDate,
-  getLatestStatsFile,
-  getLatestScreenshotFile,
+  getStatsByDate,
+  getStatsByStateByDate,
+  getLatestStats,
+  getLatestStatsByState,
+  getLatestScreenshot,
   countdownPromise,
   download,
   followRedirects,

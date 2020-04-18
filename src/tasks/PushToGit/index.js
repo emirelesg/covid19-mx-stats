@@ -8,8 +8,11 @@ module.exports = async (log, date) => {
   const message = `updated stats for ${date.format('YYYY-MM-DD')}`;
   const dir = utils.getDirByDate(date);
   const dirRegex = new RegExp(dir, 'g');
-  const latestFile = utils.getLatestStatsFile();
-  const latestScreenshot = utils.getLatestScreenshotFile();
+  const latestFIles = [
+    utils.getLatestStats(),
+    utils.getLatestStatsByState(),
+    utils.getLatestScreenshot()
+  ];
 
   const isRepo = await git.checkIsRepo();
   if (!isRepo) throw new Error('Project is not a repo.');
@@ -18,15 +21,13 @@ module.exports = async (log, date) => {
   const files = status.files
     .filter(
       (f, i, arr) =>
-        (f.path.match(dirRegex) ||
-          f.path === latestFile ||
-          f.path === latestScreenshot) &&
+        (f.path.match(dirRegex) || latestFIles.indexOf(f.path) > -1) &&
         arr.indexOf(f) === i
     )
     .map((f) => f.path);
 
   if (files.length === 0) {
-    log(`No files changed in ${dir} or ${latestFile}`);
+    log(`No changes found in ${dir} or in any of the latest files.`);
   } else {
     log('The following files changed:');
     log(files);
