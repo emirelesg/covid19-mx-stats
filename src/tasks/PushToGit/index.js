@@ -28,14 +28,14 @@ module.exports = async (log, date) => {
   if (files.length === 0) {
     log(`No files changed in ${dir} or ${latestFile}`);
   } else {
-    log('OK the following files changed:');
+    log('The following files changed:');
     log(files);
     if (!dryRun) {
       await git.add(files);
       await git.commit(message);
       await git.push('origin', 'master');
       if (files.length > 0) {
-        log('OK pushed files to git');
+        log('Pushed files to git');
       }
     }
   }

@@ -48,7 +48,7 @@ function wait(date) {
 
 function error(err) {
   section('Error', chalk.red(err.toString()), 'red');
-  if (err.stack) console.log(chalk.red(err.stack));
+  if (err.stack) console.log(chalk.red(err.stack.replace(err.toString(), '')));
 }
 
 module.exports = {

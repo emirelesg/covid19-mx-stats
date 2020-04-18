@@ -49,6 +49,11 @@ async function getLinks(link) {
   return links;
 }
 
+async function followRedirects(href) {
+  const response = await axios.get(href);
+  return response.request.res.responseUrl;
+}
+
 function makeStringSafe(s) {
   return (
     s
@@ -126,6 +131,7 @@ module.exports = {
   getLatestScreenshotFile,
   countdownPromise,
   download,
+  followRedirects,
   getLinks,
   delay,
   execTask,

@@ -9,12 +9,12 @@ module.exports = [
     fn: UploadStats
   },
   {
-    name: '2/4 Download PDFs',
-    fn: DownloadReports
+    name: '2/4 Screenshot',
+    fn: Screenshot
   },
   {
-    name: '3/4 Screenshot',
-    fn: Screenshot
+    name: '3/4 Download PDFs',
+    fn: DownloadReports
   },
   {
     name: '4/4 Push to Git',

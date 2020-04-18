@@ -43,7 +43,7 @@ function saveScreenshot(log, date, png) {
 module.exports = async (log, today, yesterday) => {
   const url = config.args.localhost || config.siteUrl;
   const driver = await new webdriver.Builder()
-    .forBrowser(config.proxyBrowser)
+    .forBrowser('chrome')
     .setChromeOptions(driverOptions)
     .build();
   try {

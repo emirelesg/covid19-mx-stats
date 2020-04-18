@@ -79,8 +79,29 @@ function saveStatsFile(log, stats, today) {
   );
 }
 
+function processData(log, rawData) {
+  log(`Processing intercepted data`);
+  const o = { confirmed: {}, suspected: {}, deaths: {} };
+  JSON.parse(JSON.parse(rawData).d).forEach((rawState) => {
+    if (rawState.length >= 8) {
+      const stateMatch = config.states.find((statePattern) =>
+        rawState[1].match(statePattern[3])
+      );
+      if (stateMatch) {
+        o.confirmed[stateMatch[0]] = parseInt(rawState[4], 10);
+        o.suspected[stateMatch[0]] = parseInt(rawState[6], 10);
+        o.deaths[stateMatch[0]] = parseInt(rawState[7], 10);
+      }
+    } else {
+      throw new Error(`Unknown state data format: ${rawState}`);
+    }
+  });
+  return o;
+}
+
 module.exports = async (log, today, yesterday) => {
-  const statesInfo = await proxy(log);
+  const rawStatesInfo = await proxy(log);
+  const statesInfo = processData(log, rawStatesInfo);
   log('Creating stats object with received data');
   const prevStatsObj = utils.readJSON(utils.getStatsFileByDate(yesterday));
   const latestStatsObj = makeStats(prevStatsObj, statesInfo, today);
