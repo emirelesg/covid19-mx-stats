@@ -14,10 +14,11 @@ function makeByState(today, yesterday) {
   } else {
     statsByState = {
       dates: [],
-      states: config.states.reduce((obj, [stateKey]) => {
+      states: config.states.reduce((obj, [stateKey, stateName]) => {
         return {
           ...obj,
           [stateKey]: {
+            name: stateName,
             confirmed: [],
             suspected: [],
             deaths: []
@@ -134,3 +135,12 @@ module.exports = {
   make,
   save
 };
+
+// if (!module.parent) {
+//   const moment = require('moment');
+//   const today = moment(config.args.date);
+//   const yesterday = moment(today).subtract(1, 'day');
+//   const byState = makeByState(today, yesterday);
+//   console.log(byState);
+//   saveByState(console.log, today, byState);
+// }
