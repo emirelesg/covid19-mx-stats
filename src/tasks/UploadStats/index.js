@@ -70,13 +70,12 @@ function areStatsDifferent(latest, prev) {
 
 // TODO: only write to the latest file if it is really the latest.
 function saveStatsFile(log, stats, today) {
+  const files = [utils.getStatsFileByDate(today), utils.getLatestStatsFile()];
   if (!dryRun) utils.makeFolder(utils.getDirByDate(today));
-  [utils.getStatsFileByDate(today), utils.getLatestStatsFile()].forEach(
-    (file) => {
-      log(`Stats saved to ${file}`);
-      if (!dryRun) utils.saveJSON(file, stats);
-    }
-  );
+  files.forEach((file) => {
+    if (!dryRun) utils.saveJSON(file, stats);
+    log(`Saved stats to ${file}`);
+  });
 }
 
 function processData(log, rawData) {

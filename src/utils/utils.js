@@ -3,6 +3,7 @@ const path = require('path');
 const axios = require('axios');
 const cheerio = require('cheerio');
 const url = require('url');
+const moment = require('moment');
 const config = require('../config');
 const print = require('./print');
 
@@ -119,11 +120,19 @@ function execTask(number, desc, isComplete, callback, ...args) {
   return callback(log, ...args);
 }
 
+function isDateLatest(today) {
+  const latestStats = readJSON(getLatestStatsFile());
+  const { date } = latestStats.timeseries.slice(-1)[0];
+  const latest = moment(date);
+  return moment(today.format(config.outputDatePattern)).isSameOrAfter(latest);
+}
+
 module.exports = {
   makeStringSafe,
   readJSON,
   saveJSON,
   makeFolder,
+  isDateLatest,
   getDirByDate,
   getFileByDate,
   getStatsFileByDate,
