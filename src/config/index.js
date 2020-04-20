@@ -55,14 +55,14 @@ module.exports = {
 
   // Names and search patterns for pdf reports.
   reports: [
-    {
-      name: 'Positive-Cases.pdf',
-      pattern: /positivos/g
-    },
-    {
-      name: 'Suspected-Cases.pdf',
-      pattern: /sospechosos/g
-    },
+    // {
+    //   name: 'Positive-Cases.pdf',
+    //   pattern: /positivos/g
+    // },
+    // {
+    //   name: 'Suspected-Cases.pdf',
+    //   pattern: /sospechosos/g
+    // },
     {
       name: 'Daily-Report.pdf',
       pattern: /comunicado/g
