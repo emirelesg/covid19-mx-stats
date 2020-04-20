@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "manage covid-19 statistics for covid19.newtondreams.com",
   "scripts": {
-    "start": "node ./src/index.js"
+    "start": "node ./src/index.js",
+    "sc": "node ./src/tasks/Screenshot/index.js"
   },
   "author": "emirelesg",
   "license": "MIT",

@@ -58,6 +58,7 @@ module.exports = async (log, today, yesterday) => {
     );
     log(`Element ${config.screenshot.waitFor} loaded`);
     await driver.executeScript(script);
+    await utils.delay(2000);
     const png = await driver.takeScreenshot();
     log(`Took screenshot`);
     saveScreenshot(log, today, png);
@@ -68,3 +69,13 @@ module.exports = async (log, today, yesterday) => {
   await driver.quit();
   return true;
 };
+
+if (!module.parent) {
+  if (config.args.date) {
+    const moment = require('moment');
+    const today = moment(config.args.date);
+    module.exports(console.log, today).then(console.log).catch(console.error);
+  } else {
+    console.log(`Missing date parameter.`);
+  }
+}

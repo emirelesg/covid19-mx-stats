@@ -11,6 +11,8 @@ module.exports = {
     date: argv.d,
     // -l use a different address for screenshots.
     localhost: argv.l,
+    // -f filename for screenshots,
+    file: argv.f,
     // --dry-run do not write anything.
     dryRun: argv['dry-run'] || false
   },
@@ -19,7 +21,7 @@ module.exports = {
   screenshot: {
     width: 1280,
     height: 739,
-    scroll: 235,
+    scroll: 230,
     scale: 2,
     waitFor: '#map',
     timeout: 5000
