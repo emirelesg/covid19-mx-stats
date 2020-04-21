@@ -13,6 +13,8 @@ module.exports = {
     localhost: argv.l,
     // --gif flag for making a gif.
     gif: argv.gif || false,
+    // --local flag to avoid uploading stuff to the internet.
+    local: argv.local || false,
     // --dry-run do not write anything.
     dryRun: argv['dry-run'] || false
   },
@@ -104,8 +106,8 @@ module.exports = {
   ],
 
   // Page where the pdf reports are found.
-  // reportsUrl:
-  // 'https://www.gob.mx/salud/documentos/coronavirus-covid-19-comunicado-tecnico-diario-238449',
+  reportsUrl:
+    'https://www.gob.mx/salud/documentos/coronavirus-covid-19-comunicado-tecnico-diario-238449',
 
   // Page loaded where data is intercepted.
   // proxyUrl: 'https://covid19.sinave.gob.mx/',

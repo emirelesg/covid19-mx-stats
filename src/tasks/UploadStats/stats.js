@@ -21,7 +21,8 @@ function makeByState(today, yesterday) {
             name: stateName,
             confirmed: [],
             suspected: [],
-            deaths: []
+            deaths: [],
+            active: []
           }
         };
       }, {})
@@ -32,10 +33,18 @@ function makeByState(today, yesterday) {
   const todayStats = utils.readJSON(utils.getStatsByDate(today));
   statsByState.dates.push(today.format(config.outputDatePattern));
   Object.entries(todayStats.states).forEach(
-    ([stateKey, { confirmed, deaths, suspected }]) => {
-      statsByState.states[stateKey].confirmed.push(confirmed);
-      statsByState.states[stateKey].suspected.push(suspected);
-      statsByState.states[stateKey].deaths.push(deaths);
+    ([stateKey, { confirmed, deaths, suspected, active }]) => {
+      statsByState.states[stateKey].confirmed.push(confirmed || 0);
+      statsByState.states[stateKey].suspected.push(suspected || 0);
+      statsByState.states[stateKey].deaths.push(deaths || 0);
+
+      // Initialize active array for those files that do not have this.
+      // if (!statsByState.states[stateKey].active) {
+      //   statsByState.states[stateKey].active = new Array(
+      //     statsByState.dates.length
+      //   ).fill(0);
+      // }
+      statsByState.states[stateKey].active.push(active || 0);
     }
   );
 
@@ -44,7 +53,7 @@ function makeByState(today, yesterday) {
 
 function make(today, yesterday, data) {
   // Contains data by state.
-  const { confirmed, suspected, deaths } = data;
+  const { confirmed, suspected, deaths, active } = data;
 
   // Build stats object using today's data and yesterday's stats object.
   const prevStats = utils.readJSON(utils.getStatsByDate(yesterday));
@@ -55,7 +64,8 @@ function make(today, yesterday, data) {
         date: today.format(config.outputDatePattern),
         confirmed: Object.values(confirmed).reduce((a, o) => a + o, 0),
         deaths: Object.values(deaths).reduce((a, o) => a + o, 0),
-        suspected: Object.values(suspected).reduce((a, o) => a + o, 0)
+        suspected: Object.values(suspected).reduce((a, o) => a + o, 0),
+        active: Object.values(active).reduce((a, o) => a + o, 0)
       }
     ],
     states: config.states.reduce(
@@ -67,7 +77,8 @@ function make(today, yesterday, data) {
           confirmedDelta:
             (confirmed[key] || 0) - prevStats.states[key].confirmed,
           deaths: deaths[key] || 0,
-          suspected: suspected[key] || 0
+          suspected: suspected[key] || 0,
+          active: active[key] || 0
         }
       }),
       {}
@@ -79,7 +90,7 @@ function make(today, yesterday, data) {
   stats.statesAsArray = Object.entries(stats.states).map(([key, values]) => ({
     key,
     ...values,
-    date: today
+    date: today.format(config.outputDatePattern)
   }));
 
   return stats;

@@ -49,7 +49,9 @@ module.exports = async (log, today, yesterday) => {
   stats.saveByState(log, today, statsByStateObj);
 
   // Deploy stats and stats by state to server.
-  await deploy(log, config.ftpFiles);
+  if (!config.args.local) {
+    await deploy(log, config.ftpFiles);
+  }
 
   return true;
 };

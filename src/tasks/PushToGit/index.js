@@ -5,6 +5,11 @@ const config = require('../../config');
 const { dryRun } = config.args;
 
 module.exports = async (log, date) => {
+  if (config.args.local) {
+    log(`local mode - task canceled`);
+    return true;
+  }
+
   const message = `updated stats for ${date.format('YYYY-MM-DD')}`;
   const dir = utils.getDirByDate(date);
   const dirRegex = new RegExp(dir, 'g');

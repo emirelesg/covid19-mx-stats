@@ -4,7 +4,6 @@ const fs = require('fs');
 const axios = require('axios');
 const cheerio = require('cheerio');
 const unzipper = require('unzipper');
-const path = require('path');
 const config = require('../../config');
 const utils = require('../../utils/utils');
 
@@ -21,7 +20,7 @@ async function getZipUrl(log, today) {
   $('table > tbody > tr:nth-child(1)').each((i, tr) => {
     const row = $(tr);
     if (row.text().match(todayRegex)) {
-      log(`Found row with todays's date ${todayRegex}`);
+      log(`Found row with today's date ${todayRegex}`);
       const url = row.find('a').first().attr('href');
       if (url.match(config.source.zipRegex) && !zipUrl) {
         log(`Found zip url: ${url}`);
@@ -32,21 +31,15 @@ async function getZipUrl(log, today) {
   return zipUrl;
 }
 
-async function extractZip(today) {
-  const zipFile = utils.getSourceZipByDate(today);
-  const csvFile = utils.getSourceCsvByDate(today);
-  fs.createReadStream(zipFile)
-    .pipe(unzipper.Parse())
-    .on('entry', (entry) => {
-      const fileName = entry.path;
-      const { type } = entry;
-      if (fileName.match(config.source.csvRegex) && type === 'File') {
-        entry.pipe(fs.createWriteStream(csvFile));
-      } else {
-        entry.autodrain();
-      }
-    });
-  return fs.existsSync(csvFile);
+function extractZip(today) {
+  return new Promise((resolve) => {
+    const zipFile = utils.getSourceZipByDate(today);
+    const csvFile = utils.getSourceCsvByDate(today);
+    fs.createReadStream(zipFile)
+      .pipe(unzipper.ParseOne(config.source.csvRegex))
+      .pipe(fs.createWriteStream(csvFile))
+      .on('finish', () => resolve(fs.existsSync(csvFile)));
+  });
 }
 
 function parseSourceCsv(log, today) {
