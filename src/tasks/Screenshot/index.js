@@ -21,7 +21,7 @@ const driverOptions = new chrome.Options()
   })
   .addArguments(...config.proxyDriverArgs);
 // Script to adjust the zoom level and scroll to area of interest.
-const script = `
+const scrollScript = `
   document.body.style.zoom="${scalePercent}%";
   window.scrollTo(0, ${scroll});
 `;
@@ -40,7 +40,7 @@ function saveScreenshot(log, date, png) {
 }
 
 // Open the provided url and make a screenshot.
-module.exports = async (log, today, yesterday) => {
+module.exports = async (log, today, yesterday, script) => {
   const url = config.args.localhost || config.siteUrl;
   const driver = await new webdriver.Builder()
     .forBrowser('chrome')
@@ -57,7 +57,7 @@ module.exports = async (log, today, yesterday) => {
       config.screenshot.timeout
     );
     log(`Element ${config.screenshot.waitFor} loaded`);
-    await driver.executeScript(script);
+    await driver.executeScript(scrollScript + script);
     await utils.delay(2000);
     const png = await driver.takeScreenshot();
     log(`Took screenshot`);
@@ -71,11 +71,34 @@ module.exports = async (log, today, yesterday) => {
 };
 
 if (!module.parent) {
-  if (config.args.date) {
-    const moment = require('moment');
-    const today = moment(config.args.date);
-    module.exports(console.log, today).then(console.log).catch(console.error);
+  const moment = require('moment');
+  const fs = require('fs');
+  const today = moment(config.args.date || '2020-01-01');
+  if (config.args.gif) {
+    [0, 1, 2]
+      .reduce((previous, i) => {
+        console.log();
+        const s = `document.getElementsByClassName('v-tabs-bar__content')[0].getElementsByClassName('v-tab')[${i}].click();`;
+        return previous
+          .then(() =>
+            module.exports(
+              utils.print.sectionFn(`sc-${i}`, 'cyan'),
+              today,
+              undefined,
+              s
+            )
+          )
+          .then(() =>
+            fs.copyFileSync(
+              utils.getFileByDate(today, config.files.screenshot),
+              utils.getFileByDate(today, `Screenshot-${i}.png`)
+            )
+          );
+      }, Promise.resolve())
+      .then(() =>
+        fs.unlinkSync(utils.getFileByDate(today, config.files.screenshot))
+      );
   } else {
-    console.log(`Missing date parameter.`);
+    module.exports(console.log, today).then(console.log).catch(console.error);
   }
 }
