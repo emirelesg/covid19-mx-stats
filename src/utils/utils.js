@@ -87,7 +87,7 @@ function saveJSON(file, obj, minify) {
   });
 }
 
-function makeFolder(folder) {
+function makeDir(folder) {
   if (!fs.existsSync(folder)) fs.mkdirSync(folder);
 }
 
@@ -105,6 +105,18 @@ function getLatestScreenshot() {
 
 function getDirByDate(date) {
   return path.join(config.outputDir, date.format(config.outputDatePattern));
+}
+
+function getSourceDirByDate(date) {
+  return path.join(getDirByDate(date), config.source.dir);
+}
+
+function getSourceZipByDate(date) {
+  return path.join(getSourceDirByDate(date), config.files.sourceZip);
+}
+
+function getSourceCsvByDate(date) {
+  return path.join(getSourceDirByDate(date), config.files.sourceCsv);
 }
 
 function getFileByDate(date, filename) {
@@ -135,11 +147,16 @@ function isDateLatest(today) {
   return moment(today.format(config.outputDatePattern)).isSameOrAfter(latest);
 }
 
+function makeStatesObj() {
+  return config.states.reduce((obj, [key]) => ({ ...obj, [key]: 0 }), {});
+}
+
 module.exports = {
   makeStringSafe,
   readJSON,
   saveJSON,
-  makeFolder,
+  makeDir,
+  makeStatesObj,
   isDateLatest,
   getDirByDate,
   getFileByDate,
@@ -148,6 +165,9 @@ module.exports = {
   getLatestStats,
   getLatestStatsByState,
   getLatestScreenshot,
+  getSourceDirByDate,
+  getSourceZipByDate,
+  getSourceCsvByDate,
   countdownPromise,
   download,
   followRedirects,

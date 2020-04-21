@@ -3,8 +3,8 @@ const path = require('path');
 const fs = require('fs');
 const utils = require('../../utils/utils');
 const config = require('../../config');
-const proxy = require('./proxy');
 const stats = require('./stats');
+const csv = require('./csv');
 
 const { dryRun } = config.args;
 
@@ -29,30 +29,9 @@ async function deploy(log, files) {
   return true;
 }
 
-function processData(log, rawData) {
-  log(`Processing intercepted data`);
-  const o = { confirmed: {}, suspected: {}, deaths: {} };
-  JSON.parse(JSON.parse(rawData).d).forEach((rawState) => {
-    if (rawState.length >= 8) {
-      const stateMatch = config.states.find((statePattern) =>
-        rawState[1].match(statePattern[3])
-      );
-      if (stateMatch) {
-        o.confirmed[stateMatch[0]] = parseInt(rawState[4], 10);
-        o.suspected[stateMatch[0]] = parseInt(rawState[6], 10);
-        o.deaths[stateMatch[0]] = parseInt(rawState[7], 10);
-      }
-    } else {
-      throw new Error(`Unknown state data format: ${rawState}`);
-    }
-  });
-  return o;
-}
-
 module.exports = async (log, today, yesterday) => {
-  // Intercept data from map and process it to obtain data about each state.
-  const rawStatesInfo = await proxy(log);
-  const processedData = processData(log, rawStatesInfo);
+  // Gets the processed data from today.
+  const processedData = await csv(log, today);
 
   // Create a stats object and validate that the received data is newer.
   log('Creating stats object with received data');
@@ -60,7 +39,7 @@ module.exports = async (log, today, yesterday) => {
   stats.compare(log, statsObj, yesterday);
 
   // Make output folder if it does not exist.
-  if (!dryRun) utils.makeFolder(utils.getDirByDate(today));
+  if (!dryRun) utils.makeDir(utils.getDirByDate(today));
 
   // Save stats object.
   stats.save(log, today, statsObj);
