@@ -29,9 +29,8 @@ function makeByState(today, yesterday) {
     };
   }
 
-  // Append today's data to the stats by state object from yesterday.
   const todayStats = utils.readJSON(utils.getStatsByDate(today));
-  statsByState.dates.push(today.format(config.outputDatePattern));
+
   Object.entries(todayStats.states).forEach(
     ([stateKey, { confirmed, deaths, suspected, active }]) => {
       statsByState.states[stateKey].confirmed.push(confirmed || 0);
@@ -39,14 +38,17 @@ function makeByState(today, yesterday) {
       statsByState.states[stateKey].deaths.push(deaths || 0);
 
       // Initialize active array for those files that do not have this.
-      // if (!statsByState.states[stateKey].active) {
-      //   statsByState.states[stateKey].active = new Array(
-      //     statsByState.dates.length
-      //   ).fill(0);
-      // }
+      if (!statsByState.states[stateKey].active) {
+        statsByState.states[stateKey].active = new Array(
+          statsByState.dates.length
+        ).fill(0);
+      }
       statsByState.states[stateKey].active.push(active || 0);
     }
   );
+
+  // Append today's data to the stats by state object from yesterday.
+  statsByState.dates.push(today.format(config.outputDatePattern));
 
   return statsByState;
 }
