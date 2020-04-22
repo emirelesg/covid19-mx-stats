@@ -58,8 +58,8 @@ function parseSourceCsv(log, today) {
   });
 
   rows.forEach((data) => {
-    // State where the case was reported.
-    const reportedState = data.ENTIDAD_UM;
+    // State where the case lives.
+    const reportedState = data.ENTIDAD_RES;
     const stateKey = config.stateKeys[parseInt(reportedState, 10)];
 
     // Status of the patient.
