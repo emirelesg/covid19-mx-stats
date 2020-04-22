@@ -23,6 +23,7 @@ const driverOptions = new chrome.Options()
 // Script to adjust the zoom level and scroll to area of interest.
 const scrollScript = `
   document.body.style.zoom="${scalePercent}%";
+  document.querySelector('#update-alert div button span i').click();
   window.scrollTo(0, ${scroll});
 `;
 
