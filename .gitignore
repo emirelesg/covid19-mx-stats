@@ -2,6 +2,9 @@
 node_modules
 /dist
 
+# test dir
+data/2020-01-01
+
 # local env files
 .env
 .env.local
@@ -19,3 +22,4 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
