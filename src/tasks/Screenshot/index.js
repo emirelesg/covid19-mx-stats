@@ -75,7 +75,7 @@ if (!module.parent) {
   const fs = require('fs');
   const today = moment(config.args.date || '2020-01-01');
   if (config.args.gif) {
-    [0, 1, 2]
+    [0, 1, 2, 3]
       .reduce((previous, i) => {
         console.log();
         const s = `document.getElementsByClassName('v-tabs-bar__content')[0].getElementsByClassName('v-tab')[${i}].click();`;
