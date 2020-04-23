@@ -48,7 +48,8 @@ function parseSourceCsv(log, today) {
     confirmed: utils.makeStatesObj(),
     deaths: utils.makeStatesObj(),
     suspected: utils.makeStatesObj(),
-    active: utils.makeStatesObj()
+    active: utils.makeStatesObj(),
+    bySymptoms: {}
   };
   const csvFile = utils.getSourceCsvByDate(today);
 
@@ -71,15 +72,22 @@ function parseSourceCsv(log, today) {
 
     // Start of Symptoms
     const startOfSymptoms = moment(data.FECHA_SINTOMAS);
+    const startOfSymptomsKey = startOfSymptoms.format(config.outputDatePattern);
     const isActive = startOfSymptoms.isAfter(activeThresh);
 
     // Only process recognized states.
     if (stateKey) {
       if (isInfected) {
+        output.confirmed[stateKey] += 1;
+        if (output.bySymptoms[startOfSymptomsKey]) {
+          output.bySymptoms[startOfSymptomsKey][stateKey] += 1;
+        } else {
+          output.bySymptoms[startOfSymptomsKey] = utils.makeStatesObj();
+          output.bySymptoms[startOfSymptomsKey][stateKey] = 1;
+        }
         if (isActive) {
           output.active[stateKey] += 1;
         }
-        output.confirmed[stateKey] += 1;
         if (isDeceased) {
           output.deaths[stateKey] += 1;
         }
@@ -94,6 +102,12 @@ function parseSourceCsv(log, today) {
       log(`Unknown state ${reportedState}`);
     }
   });
+
+  // Convert the start of symptoms map to a sorted array.
+  output.bySymptoms = Object.entries(output.bySymptoms).sort((a, b) =>
+    a[0].localeCompare(b[0])
+  );
+
   return output;
 }
 

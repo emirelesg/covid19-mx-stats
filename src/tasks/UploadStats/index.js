@@ -45,7 +45,7 @@ module.exports = async (log, today, yesterday) => {
   stats.save(log, today, statsObj);
 
   // Create a stats by state object and save it.
-  const statsByStateObj = stats.makeByState(today, yesterday);
+  const statsByStateObj = stats.makeByState(today, yesterday, processedData);
   stats.saveByState(log, today, statsByStateObj);
 
   // Deploy stats and stats by state to server.

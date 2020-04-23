@@ -4,15 +4,15 @@ const utils = require('../../utils/utils');
 
 const { dryRun } = config.args;
 
-function makeByState(today, yesterday) {
+function makeByState(today, yesterday, { bySymptoms }) {
   // Build the stats by state object using the object from yesterday or create
   // a new one if it does not exist.
   const yesterdayStatsByState = utils.getStatsByStateByDate(yesterday);
-  let statsByState = {};
+  let output = {};
   if (fs.existsSync(yesterdayStatsByState)) {
-    statsByState = utils.readJSON(yesterdayStatsByState);
+    output = utils.readJSON(yesterdayStatsByState);
   } else {
-    statsByState = {
+    output = {
       dates: [],
       states: config.states.reduce((obj, [stateKey, stateName]) => {
         return {
@@ -33,29 +33,36 @@ function makeByState(today, yesterday) {
 
   Object.entries(todayStats.states).forEach(
     ([stateKey, { confirmed, deaths, suspected, active }]) => {
-      statsByState.states[stateKey].confirmed.push(confirmed || 0);
-      statsByState.states[stateKey].suspected.push(suspected || 0);
-      statsByState.states[stateKey].deaths.push(deaths || 0);
+      output.states[stateKey].confirmed.push(confirmed || 0);
+      output.states[stateKey].suspected.push(suspected || 0);
+      output.states[stateKey].deaths.push(deaths || 0);
 
       // Initialize active array for those files that do not have this.
-      if (!statsByState.states[stateKey].active) {
-        statsByState.states[stateKey].active = new Array(
-          statsByState.dates.length
-        ).fill(0);
+      if (!output.states[stateKey].active) {
+        output.states[stateKey].active = new Array(output.dates.length).fill(0);
       }
-      statsByState.states[stateKey].active.push(active || 0);
+      output.states[stateKey].active.push(active || 0);
+
+      // Add the start of symptoms data to object.
+      output.states[stateKey].bySymptoms = [];
+      bySymptoms.forEach(([, stateData]) => {
+        output.states[stateKey].bySymptoms.push(stateData[stateKey]);
+      });
     }
   );
 
-  // Append today's data to the stats by state object from yesterday.
-  statsByState.dates.push(today.format(config.outputDatePattern));
+  // Append dates of start of symtpoms to output.
+  output.datesBySymptoms = bySymptoms.map(([date]) => date);
 
-  return statsByState;
+  // Append today's data to the stats by state object from yesterday.
+  output.dates.push(today.format(config.outputDatePattern));
+
+  return output;
 }
 
 function make(today, yesterday, data) {
   // Contains data by state.
-  const { confirmed, suspected, deaths, active } = data;
+  const { confirmed, suspected, deaths, active, bySymptoms } = data;
 
   // Build stats object using today's data and yesterday's stats object.
   const prevStats = utils.readJSON(utils.getStatsByDate(yesterday));
@@ -85,7 +92,11 @@ function make(today, yesterday, data) {
       }),
       {}
     ),
-    statesAsArray: undefined
+    statesAsArray: undefined,
+    timeseriesBySymptoms: bySymptoms.map(([date, states]) => ({
+      date,
+      cases: Object.values(states).reduce((a, o) => a + o, 0)
+    }))
   };
 
   // Saves the state data as an array.
@@ -125,7 +136,7 @@ function compare(log, today, yesterday) {
 function save(log, today, stats) {
   const files = [utils.getStatsByDate(today), utils.getLatestStats()];
   files.forEach((file) => {
-    if (!dryRun) utils.saveJSON(file, stats);
+    if (!dryRun) utils.saveJSON(file, stats, true);
     log(`Saved stats to ${file}`);
   });
 }
