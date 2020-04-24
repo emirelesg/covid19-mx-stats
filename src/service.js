@@ -41,7 +41,7 @@ class Service {
             utils
               .execTask(
                 i + 1,
-                task.name,
+                `${i + 1}/${tasks.length} ${task.name}`,
                 c[i],
                 task.fn,
                 this.today,
