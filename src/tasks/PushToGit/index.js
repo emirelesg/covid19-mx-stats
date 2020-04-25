@@ -10,7 +10,7 @@ module.exports = async (log, date) => {
     return true;
   }
 
-  const message = `updated stats for ${date.format('YYYY-MM-DD')}`;
+  const message = `updated stats for ${date.format(config.outputDatePattern)}`;
   const dir = utils.getDirByDate(date);
   const dirRegex = new RegExp(dir, 'g');
   const latestFIles = [
