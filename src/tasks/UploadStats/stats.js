@@ -32,16 +32,12 @@ function makeByState(today, yesterday, { bySymptoms }) {
   const todayStats = utils.readJSON(utils.getStatsByDate(today));
 
   Object.entries(todayStats.states).forEach(
-    ([stateKey, { confirmed, deaths, suspected, active }]) => {
+    ([stateKey, { confirmed, deaths, suspected, active, tests }]) => {
       output.states[stateKey].confirmed.push(confirmed || 0);
       output.states[stateKey].suspected.push(suspected || 0);
       output.states[stateKey].deaths.push(deaths || 0);
-
-      // Initialize active array for those files that do not have this.
-      if (!output.states[stateKey].active) {
-        output.states[stateKey].active = new Array(output.dates.length).fill(0);
-      }
       output.states[stateKey].active.push(active || 0);
+      output.states[stateKey].tests.push(tests || 0);
 
       // Add the start of symptoms data to object.
       output.states[stateKey].bySymptoms = [];
@@ -62,7 +58,7 @@ function makeByState(today, yesterday, { bySymptoms }) {
 
 function make(today, yesterday, data) {
   // Contains data by state.
-  const { confirmed, suspected, deaths, active, bySymptoms } = data;
+  const { confirmed, suspected, deaths, active, bySymptoms, tests } = data;
 
   // Build stats object using today's data and yesterday's stats object.
   const prevStats = utils.readJSON(utils.getStatsByDate(yesterday));
@@ -74,7 +70,8 @@ function make(today, yesterday, data) {
         confirmed: Object.values(confirmed).reduce((a, o) => a + o, 0),
         deaths: Object.values(deaths).reduce((a, o) => a + o, 0),
         suspected: Object.values(suspected).reduce((a, o) => a + o, 0),
-        active: Object.values(active).reduce((a, o) => a + o, 0)
+        active: Object.values(active).reduce((a, o) => a + o, 0),
+        tests: Object.values(tests).reduce((a, o) => a + o, 0)
       }
     ],
     states: config.states.reduce(
@@ -87,7 +84,8 @@ function make(today, yesterday, data) {
             (confirmed[key] || 0) - prevStats.states[key].confirmed,
           deaths: deaths[key] || 0,
           suspected: suspected[key] || 0,
-          active: active[key] || 0
+          active: active[key] || 0,
+          tests: tests[key] || 0
         }
       }),
       {}
@@ -134,22 +132,27 @@ function compare(log, today, yesterday) {
 }
 
 function save(log, today, stats) {
-  const files = [utils.getStatsByDate(today), utils.getLatestStats()];
-  files.forEach((file) => {
-    if (!dryRun) utils.saveJSON(file, stats, true);
-    log(`Saved stats to ${file}`);
-  });
+  const statsFile = utils.getStatsByDate(today);
+  const latestStatsFile = utils.getLatestStats();
+
+  if (!dryRun) utils.saveJSON(statsFile, stats, false);
+  log(`Saved stats to ${statsFile}`);
+
+  // Minify latest stats file.
+  if (!dryRun) utils.saveJSON(latestStatsFile, stats, true);
+  log(`Saved stats to ${latestStatsFile}`);
 }
 
 function saveByState(log, today, statsByState) {
-  const files = [
-    utils.getStatsByStateByDate(today),
-    utils.getLatestStatsByState()
-  ];
-  files.forEach((file) => {
-    if (!dryRun) utils.saveJSON(file, statsByState, true);
-    log(`Saved stats by state to ${file}`);
-  });
+  const statsByStateFile = utils.getStatsByStateByDate(today);
+  const latestStatsByStateFile = utils.getLatestStatsByState();
+
+  if (!dryRun) utils.saveJSON(statsByStateFile, statsByState, false);
+  log(`Saved stats to ${statsByStateFile}`);
+
+  // Minify latest stats by state file.
+  if (!dryRun) utils.saveJSON(latestStatsByStateFile, statsByState, true);
+  log(`Saved stats to ${latestStatsByStateFile}`);
 }
 
 module.exports = {

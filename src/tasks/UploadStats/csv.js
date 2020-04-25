@@ -44,12 +44,14 @@ function extractZip(today) {
 
 function parseSourceCsv(log, today) {
   const activeThresh = today.clone().subtract('14', 'days');
+  const residenceThresh = moment('2020-04-21');
   const output = {
     confirmed: utils.makeStatesObj(),
     deaths: utils.makeStatesObj(),
     suspected: utils.makeStatesObj(),
     active: utils.makeStatesObj(),
-    bySymptoms: {}
+    bySymptoms: {},
+    tests: utils.makeStatesObj()
   };
   const csvFile = utils.getSourceCsvByDate(today);
 
@@ -60,7 +62,11 @@ function parseSourceCsv(log, today) {
 
   rows.forEach((data) => {
     // State where the case lives.
-    const reportedState = data.ENTIDAD_RES;
+    // Government started used residence as the mapping key
+    // starting on 2020-04-21
+    const reportedState = today.isSameOrAfter(residenceThresh)
+      ? data.ENTIDAD_RES
+      : data.ENTIDAD_UM;
     const stateKey = config.stateKeys[parseInt(reportedState, 10)];
 
     // Status of the patient.
@@ -77,6 +83,7 @@ function parseSourceCsv(log, today) {
 
     // Only process recognized states.
     if (stateKey) {
+      output.tests[stateKey] += 1;
       if (isInfected) {
         output.confirmed[stateKey] += 1;
         if (output.bySymptoms[startOfSymptomsKey]) {
