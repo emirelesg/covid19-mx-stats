@@ -23,7 +23,9 @@ const driverOptions = new chrome.Options()
 // Script to adjust the zoom level and scroll to area of interest.
 const scrollScript = `
   document.body.style.zoom="${scalePercent}%";
-  document.querySelector('#update-alert div button span i').click();
+  document.querySelector('header').style.display = 'none';
+  var updateAlert = document.querySelector('#update-alert div button span i');
+  if (updateAlert) updateAlert.click();
   window.scrollTo(0, ${scroll});
 `;
 
@@ -76,7 +78,7 @@ if (!module.parent) {
   const fs = require('fs');
   const today = moment(config.args.date || '2020-01-01');
   if (config.args.gif) {
-    [0, 1, 2, 3]
+    [0, 1, 2, 3, 4]
       .reduce((previous, i) => {
         console.log();
         const s = `document.getElementsByClassName('v-tabs-bar__content')[0].getElementsByClassName('v-tab')[${i}].click();`;

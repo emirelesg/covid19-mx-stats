@@ -23,7 +23,7 @@ module.exports = {
   screenshot: {
     width: 1280,
     height: 739,
-    scroll: 250,
+    scroll: 320,
     scale: 2,
     waitFor: '#map',
     timeout: 5000
