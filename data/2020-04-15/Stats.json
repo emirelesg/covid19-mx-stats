@@ -5,336 +5,384 @@
       "confirmed": 1,
       "suspected": 0,
       "deaths": 0,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-02-29",
       "confirmed": 4,
       "suspected": 0,
       "deaths": 0,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-03-01",
       "confirmed": 5,
       "suspected": 0,
       "deaths": 0,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-03-02",
       "confirmed": 5,
       "suspected": 0,
       "deaths": 0,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-03-03",
       "confirmed": 5,
       "suspected": 0,
       "deaths": 0,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-03-04",
       "confirmed": 5,
       "suspected": 0,
       "deaths": 0,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-03-05",
       "confirmed": 5,
       "suspected": 0,
       "deaths": 0,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-03-06",
       "confirmed": 6,
       "suspected": 0,
       "deaths": 0,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-03-07",
       "confirmed": 7,
       "suspected": 0,
       "deaths": 0,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-03-08",
       "confirmed": 7,
       "suspected": 0,
       "deaths": 0,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-03-09",
       "confirmed": 7,
       "suspected": 0,
       "deaths": 0,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-03-10",
       "confirmed": 7,
       "suspected": 0,
       "deaths": 0,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-03-11",
       "confirmed": 12,
       "suspected": 0,
       "deaths": 0,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-03-12",
       "confirmed": 15,
       "suspected": 0,
       "deaths": 0,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-03-13",
       "confirmed": 26,
       "suspected": 0,
       "deaths": 0,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-03-14",
       "confirmed": 41,
       "suspected": 0,
       "deaths": 0,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-03-15",
       "confirmed": 53,
       "suspected": 0,
       "deaths": 0,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-03-16",
       "confirmed": 82,
       "suspected": 0,
       "deaths": 0,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-03-17",
       "confirmed": 93,
       "suspected": 0,
       "deaths": 0,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-03-18",
       "confirmed": 118,
       "suspected": 0,
       "deaths": 0,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-03-19",
       "confirmed": 164,
       "suspected": 0,
       "deaths": 0,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-03-20",
       "confirmed": 203,
       "suspected": 0,
       "deaths": 0,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-03-21",
       "confirmed": 251,
       "suspected": 697,
       "deaths": 2,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-03-22",
       "confirmed": 316,
       "deaths": 2,
       "suspected": 793,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-03-23",
       "confirmed": 367,
       "deaths": 4,
       "suspected": 826,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-03-24",
       "confirmed": 405,
       "deaths": 5,
       "suspected": 1219,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-03-25",
       "confirmed": 475,
       "deaths": 6,
       "suspected": 1656,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-03-26",
       "confirmed": 585,
       "deaths": 8,
       "suspected": 2156,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-03-27",
       "confirmed": 717,
       "deaths": 12,
       "suspected": 2475,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-03-28",
       "confirmed": 848,
       "deaths": 16,
       "suspected": 2623,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-03-29",
       "confirmed": 993,
       "deaths": 20,
       "suspected": 2564,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-03-30",
       "confirmed": 1094,
       "deaths": 28,
       "suspected": 2752,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-03-31",
       "confirmed": 1215,
       "deaths": 29,
       "suspected": 3511,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-04-01",
       "confirmed": 1378,
       "deaths": 37,
       "suspected": 3827,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-04-02",
       "confirmed": 1510,
       "deaths": 50,
       "suspected": 4653,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-04-03",
       "confirmed": 1688,
       "deaths": 60,
       "suspected": 5398,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-04-04",
       "confirmed": 1890,
       "deaths": 79,
       "suspected": 5827,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-04-05",
       "confirmed": 2143,
       "deaths": 94,
       "suspected": 5209,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-04-06",
       "confirmed": 2439,
       "deaths": 125,
       "suspected": 6295,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-04-07",
       "confirmed": 2785,
       "deaths": 141,
       "suspected": 7526,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-04-08",
       "confirmed": 3181,
       "deaths": 174,
       "suspected": 9188,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-04-09",
       "confirmed": 3441,
       "deaths": 194,
       "suspected": 10105,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-04-10",
       "confirmed": 3844,
       "deaths": 233,
       "suspected": 10300,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-04-11",
       "confirmed": 4219,
       "deaths": 273,
       "suspected": 9983,
-      "active": 0
+      "active": 0,
+      "tests": 0
     },
     {
       "date": "2020-04-12",
       "confirmed": 4661,
       "deaths": 296,
       "suspected": 8697,
-      "active": 1803
+      "active": 1803,
+      "tests": 36594
     },
     {
       "date": "2020-04-13",
       "confirmed": 5014,
       "deaths": 332,
       "suspected": 9341,
-      "active": 1865
+      "active": 1865,
+      "tests": 38670
     },
     {
       "date": "2020-04-14",
       "confirmed": 5399,
       "deaths": 406,
       "suspected": 10792,
-      "active": 1964
+      "active": 1964,
+      "tests": 41593
     },
     {
       "date": "2020-04-15",
       "confirmed": 5847,
       "deaths": 449,
       "suspected": 11717,
-      "active": 2058
+      "active": 2058,
+      "tests": 44436
     }
   ],
   "states": {
@@ -344,7 +392,8 @@
       "confirmedDelta": 1,
       "deaths": 6,
       "suspected": 259,
-      "active": 73
+      "active": 73,
+      "tests": 945
     },
     "CDMX": {
       "name": "Ciudad de México",
@@ -352,7 +401,8 @@
       "confirmedDelta": 130,
       "deaths": 99,
       "suspected": 2364,
-      "active": 632
+      "active": 632,
+      "tests": 9499
     },
     "BC": {
       "name": "Baja California",
@@ -360,7 +410,8 @@
       "confirmedDelta": 52,
       "deaths": 28,
       "suspected": 690,
-      "active": 151
+      "active": 151,
+      "tests": 2041
     },
     "SL": {
       "name": "San Luis Potosí",
@@ -368,7 +419,8 @@
       "confirmedDelta": 1,
       "deaths": 4,
       "suspected": 129,
-      "active": 12
+      "active": 12,
+      "tests": 1060
     },
     "AG": {
       "name": "Aguascalientes",
@@ -376,7 +428,8 @@
       "confirmedDelta": 0,
       "deaths": 1,
       "suspected": 83,
-      "active": 6
+      "active": 6,
+      "tests": 917
     },
     "QR": {
       "name": "Quintana Roo",
@@ -384,7 +437,8 @@
       "confirmedDelta": 24,
       "deaths": 27,
       "suspected": 182,
-      "active": 94
+      "active": 94,
+      "tests": 914
     },
     "GJ": {
       "name": "Guanajuato",
@@ -392,7 +446,8 @@
       "confirmedDelta": 1,
       "deaths": 5,
       "suspected": 186,
-      "active": 25
+      "active": 25,
+      "tests": 1907
     },
     "NL": {
       "name": "Nuevo León",
@@ -400,7 +455,8 @@
       "confirmedDelta": 14,
       "deaths": 5,
       "suspected": 2015,
-      "active": 42
+      "active": 42,
+      "tests": 4006
     },
     "TM": {
       "name": "Tamaulipas",
@@ -408,7 +464,8 @@
       "confirmedDelta": 5,
       "deaths": 4,
       "suspected": 216,
-      "active": 22
+      "active": 22,
+      "tests": 774
     },
     "CH": {
       "name": "Chihuahua",
@@ -416,7 +473,8 @@
       "confirmedDelta": 14,
       "deaths": 20,
       "suspected": 207,
-      "active": 34
+      "active": 34,
+      "tests": 535
     },
     "MI": {
       "name": "Michoacán",
@@ -424,7 +482,8 @@
       "confirmedDelta": 3,
       "deaths": 12,
       "suspected": 189,
-      "active": 22
+      "active": 22,
+      "tests": 752
     },
     "QT": {
       "name": "Querétaro",
@@ -432,7 +491,8 @@
       "confirmedDelta": 4,
       "deaths": 5,
       "suspected": 82,
-      "active": 22
+      "active": 22,
+      "tests": 599
     },
     "ZA": {
       "name": "Zacatecas",
@@ -440,7 +500,8 @@
       "confirmedDelta": 1,
       "deaths": 2,
       "suspected": 77,
-      "active": 6
+      "active": 6,
+      "tests": 354
     },
     "CM": {
       "name": "Campeche",
@@ -448,7 +509,8 @@
       "confirmedDelta": 10,
       "deaths": 2,
       "suspected": 36,
-      "active": 25
+      "active": 25,
+      "tests": 183
     },
     "CO": {
       "name": "Coahuila",
@@ -456,7 +518,8 @@
       "confirmedDelta": 1,
       "deaths": 12,
       "suspected": 946,
-      "active": 53
+      "active": 53,
+      "tests": 2159
     },
     "GR": {
       "name": "Guerrero",
@@ -464,7 +527,8 @@
       "confirmedDelta": 9,
       "deaths": 8,
       "suspected": 125,
-      "active": 53
+      "active": 53,
+      "tests": 542
     },
     "TL": {
       "name": "Tlaxcala",
@@ -472,7 +536,8 @@
       "confirmedDelta": 7,
       "deaths": 4,
       "suspected": 95,
-      "active": 29
+      "active": 29,
+      "tests": 523
     },
     "VE": {
       "name": "Veracruz",
@@ -480,7 +545,8 @@
       "confirmedDelta": 12,
       "deaths": 6,
       "suspected": 437,
-      "active": 46
+      "active": 46,
+      "tests": 1479
     },
     "CS": {
       "name": "Chiapas",
@@ -488,7 +554,8 @@
       "confirmedDelta": 3,
       "deaths": 3,
       "suspected": 71,
-      "active": 16
+      "active": 16,
+      "tests": 381
     },
     "DG": {
       "name": "Durango",
@@ -496,7 +563,8 @@
       "confirmedDelta": 1,
       "deaths": 4,
       "suspected": 97,
-      "active": 1
+      "active": 1,
+      "tests": 397
     },
     "HG": {
       "name": "Hidalgo",
@@ -504,7 +572,8 @@
       "confirmedDelta": 0,
       "deaths": 12,
       "suspected": 42,
-      "active": 17
+      "active": 17,
+      "tests": 496
     },
     "JA": {
       "name": "Jalisco",
@@ -512,7 +581,8 @@
       "confirmedDelta": 11,
       "deaths": 11,
       "suspected": 565,
-      "active": 38
+      "active": 38,
+      "tests": 3383
     },
     "MO": {
       "name": "Morelos",
@@ -520,7 +590,8 @@
       "confirmedDelta": 3,
       "deaths": 10,
       "suspected": 85,
-      "active": 23
+      "active": 23,
+      "tests": 443
     },
     "NA": {
       "name": "Nayarit",
@@ -528,7 +599,8 @@
       "confirmedDelta": 2,
       "deaths": 5,
       "suspected": 43,
-      "active": 13
+      "active": 13,
+      "tests": 233
     },
     "SI": {
       "name": "Sinaloa",
@@ -536,7 +608,8 @@
       "confirmedDelta": 31,
       "deaths": 38,
       "suspected": 325,
-      "active": 121
+      "active": 121,
+      "tests": 1381
     },
     "TB": {
       "name": "Tabasco",
@@ -544,7 +617,8 @@
       "confirmedDelta": 15,
       "deaths": 21,
       "suspected": 365,
-      "active": 81
+      "active": 81,
+      "tests": 1121
     },
     "YU": {
       "name": "Yucatán",
@@ -552,7 +626,8 @@
       "confirmedDelta": 12,
       "deaths": 7,
       "suspected": 163,
-      "active": 42
+      "active": 42,
+      "tests": 822
     },
     "CL": {
       "name": "Colima",
@@ -560,7 +635,8 @@
       "confirmedDelta": 0,
       "deaths": 0,
       "suspected": 32,
-      "active": 0
+      "active": 0,
+      "tests": 138
     },
     "MX": {
       "name": "México",
@@ -568,7 +644,8 @@
       "confirmedDelta": 57,
       "deaths": 43,
       "suspected": 1044,
-      "active": 235
+      "active": 235,
+      "tests": 3779
     },
     "OA": {
       "name": "Oaxaca",
@@ -576,7 +653,8 @@
       "confirmedDelta": 4,
       "deaths": 5,
       "suspected": 62,
-      "active": 16
+      "active": 16,
+      "tests": 468
     },
     "PU": {
       "name": "Puebla",
@@ -584,7 +662,8 @@
       "confirmedDelta": 15,
       "deaths": 31,
       "suspected": 347,
-      "active": 80
+      "active": 80,
+      "tests": 1452
     },
     "SO": {
       "name": "Sonora",
@@ -592,7 +671,8 @@
       "confirmedDelta": 5,
       "deaths": 9,
       "suspected": 158,
-      "active": 28
+      "active": 28,
+      "tests": 753
     }
   },
   "statesAsArray": [
@@ -604,6 +684,7 @@
       "deaths": 6,
       "suspected": 259,
       "active": 73,
+      "tests": 945,
       "date": "2020-04-15"
     },
     {
@@ -614,6 +695,7 @@
       "deaths": 99,
       "suspected": 2364,
       "active": 632,
+      "tests": 9499,
       "date": "2020-04-15"
     },
     {
@@ -624,6 +706,7 @@
       "deaths": 28,
       "suspected": 690,
       "active": 151,
+      "tests": 2041,
       "date": "2020-04-15"
     },
     {
@@ -634,6 +717,7 @@
       "deaths": 4,
       "suspected": 129,
       "active": 12,
+      "tests": 1060,
       "date": "2020-04-15"
     },
     {
@@ -644,6 +728,7 @@
       "deaths": 1,
       "suspected": 83,
       "active": 6,
+      "tests": 917,
       "date": "2020-04-15"
     },
     {
@@ -654,6 +739,7 @@
       "deaths": 27,
       "suspected": 182,
       "active": 94,
+      "tests": 914,
       "date": "2020-04-15"
     },
     {
@@ -664,6 +750,7 @@
       "deaths": 5,
       "suspected": 186,
       "active": 25,
+      "tests": 1907,
       "date": "2020-04-15"
     },
     {
@@ -674,6 +761,7 @@
       "deaths": 5,
       "suspected": 2015,
       "active": 42,
+      "tests": 4006,
       "date": "2020-04-15"
     },
     {
@@ -684,6 +772,7 @@
       "deaths": 4,
       "suspected": 216,
       "active": 22,
+      "tests": 774,
       "date": "2020-04-15"
     },
     {
@@ -694,6 +783,7 @@
       "deaths": 20,
       "suspected": 207,
       "active": 34,
+      "tests": 535,
       "date": "2020-04-15"
     },
     {
@@ -704,6 +794,7 @@
       "deaths": 12,
       "suspected": 189,
       "active": 22,
+      "tests": 752,
       "date": "2020-04-15"
     },
     {
@@ -714,6 +805,7 @@
       "deaths": 5,
       "suspected": 82,
       "active": 22,
+      "tests": 599,
       "date": "2020-04-15"
     },
     {
@@ -724,6 +816,7 @@
       "deaths": 2,
       "suspected": 77,
       "active": 6,
+      "tests": 354,
       "date": "2020-04-15"
     },
     {
@@ -734,6 +827,7 @@
       "deaths": 2,
       "suspected": 36,
       "active": 25,
+      "tests": 183,
       "date": "2020-04-15"
     },
     {
@@ -744,6 +838,7 @@
       "deaths": 12,
       "suspected": 946,
       "active": 53,
+      "tests": 2159,
       "date": "2020-04-15"
     },
     {
@@ -754,6 +849,7 @@
       "deaths": 8,
       "suspected": 125,
       "active": 53,
+      "tests": 542,
       "date": "2020-04-15"
     },
     {
@@ -764,6 +860,7 @@
       "deaths": 4,
       "suspected": 95,
       "active": 29,
+      "tests": 523,
       "date": "2020-04-15"
     },
     {
@@ -774,6 +871,7 @@
       "deaths": 6,
       "suspected": 437,
       "active": 46,
+      "tests": 1479,
       "date": "2020-04-15"
     },
     {
@@ -784,6 +882,7 @@
       "deaths": 3,
       "suspected": 71,
       "active": 16,
+      "tests": 381,
       "date": "2020-04-15"
     },
     {
@@ -794,6 +893,7 @@
       "deaths": 4,
       "suspected": 97,
       "active": 1,
+      "tests": 397,
       "date": "2020-04-15"
     },
     {
@@ -804,6 +904,7 @@
       "deaths": 12,
       "suspected": 42,
       "active": 17,
+      "tests": 496,
       "date": "2020-04-15"
     },
     {
@@ -814,6 +915,7 @@
       "deaths": 11,
       "suspected": 565,
       "active": 38,
+      "tests": 3383,
       "date": "2020-04-15"
     },
     {
@@ -824,6 +926,7 @@
       "deaths": 10,
       "suspected": 85,
       "active": 23,
+      "tests": 443,
       "date": "2020-04-15"
     },
     {
@@ -834,6 +937,7 @@
       "deaths": 5,
       "suspected": 43,
       "active": 13,
+      "tests": 233,
       "date": "2020-04-15"
     },
     {
@@ -844,6 +948,7 @@
       "deaths": 38,
       "suspected": 325,
       "active": 121,
+      "tests": 1381,
       "date": "2020-04-15"
     },
     {
@@ -854,6 +959,7 @@
       "deaths": 21,
       "suspected": 365,
       "active": 81,
+      "tests": 1121,
       "date": "2020-04-15"
     },
     {
@@ -864,6 +970,7 @@
       "deaths": 7,
       "suspected": 163,
       "active": 42,
+      "tests": 822,
       "date": "2020-04-15"
     },
     {
@@ -874,6 +981,7 @@
       "deaths": 0,
       "suspected": 32,
       "active": 0,
+      "tests": 138,
       "date": "2020-04-15"
     },
     {
@@ -884,6 +992,7 @@
       "deaths": 43,
       "suspected": 1044,
       "active": 235,
+      "tests": 3779,
       "date": "2020-04-15"
     },
     {
@@ -894,6 +1003,7 @@
       "deaths": 5,
       "suspected": 62,
       "active": 16,
+      "tests": 468,
       "date": "2020-04-15"
     },
     {
@@ -904,6 +1014,7 @@
       "deaths": 31,
       "suspected": 347,
       "active": 80,
+      "tests": 1452,
       "date": "2020-04-15"
     },
     {
@@ -914,7 +1025,230 @@
       "deaths": 9,
       "suspected": 158,
       "active": 28,
+      "tests": 753,
       "date": "2020-04-15"
+    }
+  ],
+  "timeseriesBySymptoms": [
+    {
+      "date": "2020-02-17",
+      "cases": 2
+    },
+    {
+      "date": "2020-02-19",
+      "cases": 2
+    },
+    {
+      "date": "2020-02-21",
+      "cases": 1
+    },
+    {
+      "date": "2020-02-22",
+      "cases": 2
+    },
+    {
+      "date": "2020-02-23",
+      "cases": 2
+    },
+    {
+      "date": "2020-02-25",
+      "cases": 2
+    },
+    {
+      "date": "2020-02-26",
+      "cases": 1
+    },
+    {
+      "date": "2020-02-27",
+      "cases": 1
+    },
+    {
+      "date": "2020-02-28",
+      "cases": 2
+    },
+    {
+      "date": "2020-02-29",
+      "cases": 2
+    },
+    {
+      "date": "2020-03-01",
+      "cases": 6
+    },
+    {
+      "date": "2020-03-02",
+      "cases": 7
+    },
+    {
+      "date": "2020-03-03",
+      "cases": 6
+    },
+    {
+      "date": "2020-03-04",
+      "cases": 7
+    },
+    {
+      "date": "2020-03-05",
+      "cases": 7
+    },
+    {
+      "date": "2020-03-06",
+      "cases": 9
+    },
+    {
+      "date": "2020-03-07",
+      "cases": 19
+    },
+    {
+      "date": "2020-03-08",
+      "cases": 21
+    },
+    {
+      "date": "2020-03-09",
+      "cases": 60
+    },
+    {
+      "date": "2020-03-10",
+      "cases": 47
+    },
+    {
+      "date": "2020-03-11",
+      "cases": 48
+    },
+    {
+      "date": "2020-03-12",
+      "cases": 54
+    },
+    {
+      "date": "2020-03-13",
+      "cases": 81
+    },
+    {
+      "date": "2020-03-14",
+      "cases": 88
+    },
+    {
+      "date": "2020-03-15",
+      "cases": 94
+    },
+    {
+      "date": "2020-03-16",
+      "cases": 127
+    },
+    {
+      "date": "2020-03-17",
+      "cases": 102
+    },
+    {
+      "date": "2020-03-18",
+      "cases": 118
+    },
+    {
+      "date": "2020-03-19",
+      "cases": 104
+    },
+    {
+      "date": "2020-03-20",
+      "cases": 169
+    },
+    {
+      "date": "2020-03-21",
+      "cases": 122
+    },
+    {
+      "date": "2020-03-22",
+      "cases": 133
+    },
+    {
+      "date": "2020-03-23",
+      "cases": 198
+    },
+    {
+      "date": "2020-03-24",
+      "cases": 161
+    },
+    {
+      "date": "2020-03-25",
+      "cases": 177
+    },
+    {
+      "date": "2020-03-26",
+      "cases": 219
+    },
+    {
+      "date": "2020-03-27",
+      "cases": 248
+    },
+    {
+      "date": "2020-03-28",
+      "cases": 238
+    },
+    {
+      "date": "2020-03-29",
+      "cases": 226
+    },
+    {
+      "date": "2020-03-30",
+      "cases": 295
+    },
+    {
+      "date": "2020-03-31",
+      "cases": 263
+    },
+    {
+      "date": "2020-04-01",
+      "cases": 318
+    },
+    {
+      "date": "2020-04-02",
+      "cases": 295
+    },
+    {
+      "date": "2020-04-03",
+      "cases": 317
+    },
+    {
+      "date": "2020-04-04",
+      "cases": 286
+    },
+    {
+      "date": "2020-04-05",
+      "cases": 242
+    },
+    {
+      "date": "2020-04-06",
+      "cases": 286
+    },
+    {
+      "date": "2020-04-07",
+      "cases": 184
+    },
+    {
+      "date": "2020-04-08",
+      "cases": 139
+    },
+    {
+      "date": "2020-04-09",
+      "cases": 98
+    },
+    {
+      "date": "2020-04-10",
+      "cases": 98
+    },
+    {
+      "date": "2020-04-11",
+      "cases": 61
+    },
+    {
+      "date": "2020-04-12",
+      "cases": 36
+    },
+    {
+      "date": "2020-04-13",
+      "cases": 12
+    },
+    {
+      "date": "2020-04-14",
+      "cases": 4
     }
   ]
 }
