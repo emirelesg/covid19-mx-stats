@@ -99,6 +99,10 @@ function getLatestStatsByState() {
   return path.join(config.outputDir, config.files.latestByState);
 }
 
+function getLatestStatsBySymptoms() {
+  return path.join(config.outputDir, config.files.latestBySymptoms);
+}
+
 function getLatestScreenshot() {
   return path.join(config.outputDir, config.files.latestScreenshot);
 }
@@ -131,6 +135,10 @@ function getStatsByStateByDate(date) {
   return getFileByDate(date, config.files.statsByState);
 }
 
+function getStatsBySymptomsByDate(date) {
+  return getFileByDate(date, config.files.statsBySymptoms);
+}
+
 function execTask(number, desc, isComplete, callback, ...args) {
   const log = print.sectionFn(desc, 'blue');
   if (isComplete) {
@@ -161,6 +169,7 @@ module.exports = {
   getDirByDate,
   getFileByDate,
   getStatsByDate,
+  getLatestStatsBySymptoms,
   getStatsByStateByDate,
   getLatestStats,
   getLatestStatsByState,
@@ -168,6 +177,7 @@ module.exports = {
   getSourceDirByDate,
   getSourceZipByDate,
   getSourceCsvByDate,
+  getStatsBySymptomsByDate,
   countdownPromise,
   download,
   followRedirects,

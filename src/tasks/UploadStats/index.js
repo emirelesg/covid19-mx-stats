@@ -42,11 +42,30 @@ module.exports = async (log, today, yesterday) => {
   if (!dryRun) utils.makeDir(utils.getDirByDate(today));
 
   // Save stats object.
-  stats.save(log, today, statsObj);
+  stats.save(
+    log,
+    utils.getStatsByDate(today),
+    utils.getLatestStats(),
+    statsObj
+  );
 
   // Create a stats by state object and save it.
   const statsByStateObj = stats.makeByState(today, yesterday, processedData);
-  stats.saveByState(log, today, statsByStateObj);
+  stats.save(
+    log,
+    utils.getStatsByStateByDate(today),
+    utils.getLatestStatsByState(),
+    statsByStateObj
+  );
+
+  // Create stats by symptoms object and save it.
+  const statsBySymptomsObj = stats.makeBySymptoms(today);
+  stats.save(
+    log,
+    utils.getStatsBySymptomsByDate(today),
+    utils.getLatestStatsBySymptoms(),
+    statsBySymptomsObj
+  );
 
   // Deploy stats and stats by state to server.
   if (!config.args.local) {

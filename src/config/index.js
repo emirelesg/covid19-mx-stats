@@ -52,6 +52,8 @@ module.exports = {
     latestByState: 'latestByState.json',
     screenshot: 'Screenshot.png',
     latestScreenshot: 'latest.png',
+    statsBySymptoms: 'StatsBySymptoms.json',
+    latestBySymptoms: 'latestBySymptoms.json',
     sourceZip: 'dataInput.zip',
     sourceCsv: 'dataInput.csv'
   },
@@ -102,6 +104,10 @@ module.exports = {
     {
       local: './data/latestByState.json',
       remote: './covid19/api/statsByState.json'
+    },
+    {
+      local: './data/latestBySymptoms.json',
+      remote: './covid19/api/statsBySymptoms.json'
     }
   ],
 

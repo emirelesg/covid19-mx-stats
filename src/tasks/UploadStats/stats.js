@@ -1,8 +1,27 @@
 const fs = require('fs');
+const moment = require('moment');
 const config = require('../../config');
 const utils = require('../../utils/utils');
 
 const { dryRun } = config.args;
+
+function makeBySymptoms(today) {
+  // Create an array with the timeseriesBySymptoms for all dates after
+  // 2020-04-12, this is to create an animation.
+  const symptoms = [];
+  for (
+    let date = moment('2020-04-12');
+    date.isSameOrBefore(today);
+    date.add(1, 'day')
+  ) {
+    const data = utils.readJSON(utils.getStatsByDate(date));
+    symptoms.push([
+      date.format(config.outputDatePattern),
+      data.timeseriesBySymptoms.map((obj) => [obj.date, obj.cases])
+    ]);
+  }
+  return { symptoms };
+}
 
 function makeByState(today, yesterday, { bySymptoms }) {
   // Build the stats by state object using the object from yesterday or create
@@ -131,33 +150,17 @@ function compare(log, today, yesterday) {
   log(latest);
 }
 
-function save(log, today, stats) {
-  const statsFile = utils.getStatsByDate(today);
-  const latestStatsFile = utils.getLatestStats();
-
-  if (!dryRun) utils.saveJSON(statsFile, stats, false);
-  log(`Saved stats to ${statsFile}`);
-
+function save(log, filePath, minifiedPath, object) {
+  if (!dryRun) utils.saveJSON(filePath, object, false);
+  log(`Saved stats to ${filePath}`);
   // Minify latest stats file.
-  if (!dryRun) utils.saveJSON(latestStatsFile, stats, true);
-  log(`Saved stats to ${latestStatsFile}`);
-}
-
-function saveByState(log, today, statsByState) {
-  const statsByStateFile = utils.getStatsByStateByDate(today);
-  const latestStatsByStateFile = utils.getLatestStatsByState();
-
-  if (!dryRun) utils.saveJSON(statsByStateFile, statsByState, false);
-  log(`Saved stats to ${statsByStateFile}`);
-
-  // Minify latest stats by state file.
-  if (!dryRun) utils.saveJSON(latestStatsByStateFile, statsByState, true);
-  log(`Saved stats to ${latestStatsByStateFile}`);
+  if (!dryRun) utils.saveJSON(minifiedPath, object, true);
+  log(`Saved minified stats to ${minifiedPath}`);
 }
 
 module.exports = {
   makeByState,
-  saveByState,
+  makeBySymptoms,
   compare,
   make,
   save

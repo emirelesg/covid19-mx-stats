@@ -1,22 +1,23 @@
 const UploadStats = require('./UploadStats');
 const Screenshot = require('./Screenshot');
+const DownloadReports = require('./DownloadReports');
 const PushToGit = require('./PushToGit');
 
 module.exports = [
   {
-    name: '1/4 Upload Stats',
+    name: 'Upload Stats',
     fn: UploadStats
   },
   {
-    name: '2/4 Screenshot',
+    name: 'Screenshot',
     fn: Screenshot
   },
   // {
-  //   name: '3/4 Download PDFs',
+  //   name: 'Download PDFs',
   //   fn: DownloadReports
   // },
   {
-    name: '4/4 Push to Git',
+    name: 'Push to Git',
     fn: PushToGit
   }
 ];
