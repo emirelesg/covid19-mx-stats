@@ -1,26 +1,35 @@
 const fs = require('fs');
-const moment = require('moment');
 const config = require('../../config');
 const utils = require('../../utils/utils');
 
 const { dryRun } = config.args;
 
-function makeBySymptoms(today) {
-  // Create an array with the timeseriesBySymptoms for all dates after
-  // 2020-04-12, this is to create an animation.
-  const symptoms = [];
-  for (
-    let date = moment('2020-04-12');
-    date.isSameOrBefore(today);
-    date.add(1, 'day')
-  ) {
-    const data = utils.readJSON(utils.getStatsByDate(date));
-    symptoms.push([
-      date.format(config.outputDatePattern),
-      data.timeseriesBySymptoms.map((obj) => [obj.date, obj.cases])
-    ]);
-  }
-  return { symptoms };
+function makeBySymptoms(today, yesterday) {
+  // Load previous data.
+  const { dates, cases } = utils.readJSON(
+    utils.getStatsBySymptomsByDate(yesterday)
+  );
+
+  // Add today's date to list of dates.
+  cases[today.format(config.outputDatePattern)] = new Array(dates.length).fill(
+    0
+  );
+  dates.push(today.format(config.outputDatePattern));
+
+  // Add a zero to all dates for today.
+  const allDates = Object.keys(cases);
+  allDates.forEach((d) => cases[d].push(0));
+
+  // Read today stats and modify the pushed 0 for all dates in the timeseries.
+  const idx = dates.length - 1;
+  const { timeseriesBySymptoms } = utils.readJSON(utils.getStatsByDate(today));
+  timeseriesBySymptoms.forEach((obj) => {
+    if (cases[obj.date]) {
+      cases[obj.date][idx] = obj.cases;
+    }
+  });
+
+  return { dates, cases };
 }
 
 function makeByState(today, yesterday, { bySymptoms }) {

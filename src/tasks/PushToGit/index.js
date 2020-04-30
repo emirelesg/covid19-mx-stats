@@ -16,7 +16,8 @@ module.exports = async (log, date) => {
   const latestFIles = [
     utils.getLatestStats(),
     utils.getLatestStatsByState(),
-    utils.getLatestScreenshot()
+    utils.getLatestScreenshot(),
+    utils.getLatestStatsBySymptoms()
   ];
 
   const isRepo = await git.checkIsRepo();

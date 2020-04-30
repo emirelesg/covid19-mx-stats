@@ -59,7 +59,7 @@ module.exports = async (log, today, yesterday) => {
   );
 
   // Create stats by symptoms object and save it.
-  const statsBySymptomsObj = stats.makeBySymptoms(today);
+  const statsBySymptomsObj = stats.makeBySymptoms(today, yesterday);
   stats.save(
     log,
     utils.getStatsBySymptomsByDate(today),
