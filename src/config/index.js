@@ -11,8 +11,6 @@ module.exports = {
     date: argv.d,
     // -l use a different address for screenshots.
     localhost: argv.l,
-    // --gif flag for making a gif.
-    gif: argv.gif || false,
     // --local flag to avoid uploading stuff to the internet.
     local: argv.local || false,
     // --dry-run do not write anything.
@@ -51,6 +49,8 @@ module.exports = {
     latest: 'latest.json',
     latestByState: 'latestByState.json',
     screenshot: 'Screenshot.png',
+    screenshotsWildcard: 'Screenshot-*.png',
+    movie: 'Screenshots.mp4',
     latestScreenshot: 'latest.png',
     statsBySymptoms: 'StatsBySymptoms.json',
     latestBySymptoms: 'latestBySymptoms.json',

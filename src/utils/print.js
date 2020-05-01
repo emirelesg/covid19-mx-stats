@@ -3,7 +3,7 @@ const sameLineLog = require('single-line-log').stdout;
 const moment = require('moment');
 const config = require('../config');
 
-const { dryRun } = config.args;
+const { dryRun, local } = config.args;
 
 function fixedLengthString(s) {
   return s.length > 20 ? s.substr(0, 20) : s + Array(20 - s.length).join(' ');
@@ -35,7 +35,8 @@ function welcome() {
     chalk`Automatically update stats for {bold covid19.newtondreams.com}`
   );
   console.log(chalk`Started: {cyan ${moment().format('ll LTS')}}`);
-  if (dryRun) console.log(chalk`{red *DRY RUN*}`);
+  const flags = [dryRun ? '*DRY RUN*' : '', local ? '*LOCAL RUN*' : ''];
+  if (dryRun || local) console.log(chalk`{red ${flags.join(' ')}}`);
   console.log();
 }
 

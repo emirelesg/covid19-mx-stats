@@ -72,36 +72,3 @@ module.exports = async (log, today, yesterday, script) => {
   await driver.quit();
   return true;
 };
-
-if (!module.parent) {
-  const moment = require('moment');
-  const fs = require('fs');
-  const today = moment(config.args.date || '2020-01-01');
-  if (config.args.gif) {
-    [0, 1, 2, 3, 4]
-      .reduce((previous, i) => {
-        console.log();
-        const s = `document.getElementsByClassName('v-tabs-bar__content')[0].getElementsByClassName('v-tab')[${i}].click();`;
-        return previous
-          .then(() =>
-            module.exports(
-              utils.print.sectionFn(`sc-${i}`, 'cyan'),
-              today,
-              undefined,
-              s
-            )
-          )
-          .then(() =>
-            fs.copyFileSync(
-              utils.getFileByDate(today, config.files.screenshot),
-              utils.getFileByDate(today, `Screenshot-${i}.png`)
-            )
-          );
-      }, Promise.resolve())
-      .then(() =>
-        fs.unlinkSync(utils.getFileByDate(today, config.files.screenshot))
-      );
-  } else {
-    module.exports(console.log, today).then(console.log).catch(console.error);
-  }
-}
