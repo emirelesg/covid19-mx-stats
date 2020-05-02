@@ -130,23 +130,28 @@ module.exports = async (log, today) => {
   log(`Making dir ${sourceDir}`);
   utils.makeDir(sourceDir);
 
-  // Download zip if it does not exist.
-  if (!fs.existsSync(zipFile)) {
-    log(`Source zip does not exist.`);
-    const zipUrl = await getZipUrl(log, today);
-    if (!zipUrl) {
-      throw new Error(`Failed to find link to zip url with today's date.`);
-    }
-    log(`Downloading zip file to ${zipFile}`);
-    await utils.download(zipUrl, zipFile);
-  } else {
-    log(`Source zip already exists.`);
-  }
+  // Only download or extract zip if no source csv file is found.
+  if (!fs.existsSync(utils.getSourceCsvByDate(today))) {
+    log(`Source csv does not exist.`);
 
-  log(`Extracting zip file`);
-  const isExtracted = await extractZip(today);
-  if (!isExtracted) {
-    throw new Error(`Failed to extract source file from ${zipFile}`);
+    // Download zip if it does not exist.
+    if (!fs.existsSync(zipFile)) {
+      log(`Source zip does not exist.`);
+      const zipUrl = await getZipUrl(log, today);
+      if (!zipUrl) {
+        throw new Error(`Failed to find link to zip url with today's date.`);
+      }
+      log(`Downloading zip file to ${zipFile}`);
+      await utils.download(zipUrl, zipFile);
+    } else {
+      log(`Source zip already exists.`);
+    }
+
+    log(`Extracting zip file`);
+    const isExtracted = await extractZip(today);
+    if (!isExtracted) {
+      throw new Error(`Failed to extract source file from ${zipFile}`);
+    }
   }
 
   return parseSourceCsv(log, today);
