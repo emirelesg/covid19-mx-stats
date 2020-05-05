@@ -9,10 +9,6 @@ module.exports = [
     name: 'Upload Stats',
     fn: UploadStats
   },
-  // {
-  //   name: 'Screenshot',
-  //   fn: Screenshot
-  // },
   {
     name: 'Movie',
     fn: Movie
