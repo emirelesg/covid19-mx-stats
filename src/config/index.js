@@ -131,7 +131,8 @@ module.exports = {
   proxyDriverArgs: [
     'disable-gpu',
     'hide-scrollbars',
-    'ignore-certificate-errors'
+    'ignore-certificate-errors',
+    'remote-debugging-port=9222'
   ],
 
   // States in Mexico sorted by length.
