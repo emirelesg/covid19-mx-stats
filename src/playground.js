@@ -5,35 +5,48 @@ const utils = require('./utils/utils');
 const config = require('./config');
 const csv = require('./tasks/UploadStats/csv');
 
-const symptomsObj = {
-  dates: [],
-  cases: {}
-};
-const symptoms = [];
-async function init() {
-  for (
-    let today = moment('2020-04-12');
-    today.isSameOrBefore(moment('2020-04-28'));
-    today.add(1, 'day')
-  ) {
-    const data = utils.readJSON(utils.getStatsByDate(today));
-    symptoms.push([
-      today.format(config.outputDatePattern),
-      data.timeseriesBySymptoms.map(({ date, cases }) => [date, cases])
-    ]);
-
-    // symptomsObj.dates.push(today.format(config.outputDatePattern));
-    // data.timeseriesBySymptoms.forEach(({ date, cases }) => {
-    //   if (!symptomsObj.cases[date]) {
-    //     symptomsObj.cases[date] = [];
-    //   }
-    //   symptomsObj.cases[date].push(cases);
-    // });
+const data = utils.readJSON(utils.getLatestStats());
+const growth = [];
+for (let i = 0; i < data.timeseries.length; i += 1) {
+  const { confirmed, date } = data.timeseries[i];
+  if (i > 0) {
+    growth.push(confirmed / data.timeseries[i - 1].confirmed);
+  } else {
+    growth.push(0);
   }
-  utils.saveJSON('./symptoms.json', { symptoms }, true);
-  return true;
+  // console.log(date, growth[growth.length - 1]);
+  console.log(confirmed);
 }
-init().then(console.log).catch(console.error);
+
+// const symptomsObj = {
+//   dates: [],
+//   cases: {}
+// };
+// const symptoms = [];
+// async function init() {
+//   for (
+//     let today = moment('2020-04-12');
+//     today.isSameOrBefore(moment('2020-04-28'));
+//     today.add(1, 'day')
+//   ) {
+//     const data = utils.readJSON(utils.getStatsByDate(today));
+//     symptoms.push([
+//       today.format(config.outputDatePattern),
+//       data.timeseriesBySymptoms.map(({ date, cases }) => [date, cases])
+//     ]);
+
+//     // symptomsObj.dates.push(today.format(config.outputDatePattern));
+//     // data.timeseriesBySymptoms.forEach(({ date, cases }) => {
+//     //   if (!symptomsObj.cases[date]) {
+//     //     symptomsObj.cases[date] = [];
+//     //   }
+//     //   symptomsObj.cases[date].push(cases);
+//     // });
+//   }
+//   utils.saveJSON('./symptoms.json', { symptoms }, true);
+//   return true;
+// }
+// init().then(console.log).catch(console.error);
 
 // const today = moment('2020-04-13');
 // const csvFile = utils.getSourceCsvByDate(today);
