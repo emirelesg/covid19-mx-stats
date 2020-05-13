@@ -1,11 +1,18 @@
-const parse = require('csv-parse/lib/sync');
+const csv = require('csv-parser');
 const moment = require('moment');
 const fs = require('fs');
 const axios = require('axios');
 const cheerio = require('cheerio');
 const unzipper = require('unzipper');
+const { getHeapStatistics } = require('v8');
 const config = require('../../config');
 const utils = require('../../utils/utils');
+
+function availableMemory() {
+  return `${Math.floor(
+    getHeapStatistics().total_available_size / 1024 / 1024
+  )}MB`;
+}
 
 async function getZipUrl(log, today) {
   let zipUrl;
@@ -55,67 +62,71 @@ function parseSourceCsv(log, today) {
   };
   const csvFile = utils.getSourceCsvByDate(today);
 
-  log(`Parsing csv file: ${csvFile}`);
-  const rows = parse(fs.readFileSync(csvFile, 'utf-8'), {
-    columns: true
-  });
+  return new Promise((resolve, reject) => {
+    log(`Processing csv file, heap ${availableMemory()}`);
+    fs.createReadStream(csvFile)
+      .pipe(csv())
+      .on('data', (data) => {
+        // State where the case lives.
+        // Government started used residence as the mapping key
+        // starting on 2020-04-21
+        const reportedState = today.isSameOrAfter(residenceThresh)
+          ? data.ENTIDAD_RES // 7
+          : data.ENTIDAD_UM; // 4
+        const stateKey = config.stateKeys[parseInt(reportedState, 10)];
 
-  rows.forEach((data) => {
-    // State where the case lives.
-    // Government started used residence as the mapping key
-    // starting on 2020-04-21
-    const reportedState = today.isSameOrAfter(residenceThresh)
-      ? data.ENTIDAD_RES
-      : data.ENTIDAD_UM;
-    const stateKey = config.stateKeys[parseInt(reportedState, 10)];
+        // Status of the patient.
+        const result = parseInt(data.RESULTADO, 10);
+        const isInfected = result === 1;
+        const isNotInfected = result === 2;
+        const isSuspected = result === 3;
+        const isDeceased = data.FECHA_DEF !== '9999-99-99';
 
-    // Status of the patient.
-    const result = parseInt(data.RESULTADO, 10);
-    const isInfected = result === 1;
-    const isNotInfected = result === 2;
-    const isSuspected = result === 3;
-    const isDeceased = data.FECHA_DEF !== '9999-99-99';
+        // Start of Symptoms
+        const startOfSymptoms = moment(data.FECHA_SINTOMAS);
+        const startOfSymptomsKey = startOfSymptoms.format(
+          config.outputDatePattern
+        );
+        const isActive = startOfSymptoms.isAfter(activeThresh);
 
-    // Start of Symptoms
-    const startOfSymptoms = moment(data.FECHA_SINTOMAS);
-    const startOfSymptomsKey = startOfSymptoms.format(config.outputDatePattern);
-    const isActive = startOfSymptoms.isAfter(activeThresh);
-
-    // Only process recognized states.
-    if (stateKey) {
-      output.tests[stateKey] += 1;
-      if (isInfected) {
-        output.confirmed[stateKey] += 1;
-        if (output.bySymptoms[startOfSymptomsKey]) {
-          output.bySymptoms[startOfSymptomsKey][stateKey] += 1;
+        // Only process recognized states.
+        if (stateKey) {
+          output.tests[stateKey] += 1;
+          if (isInfected) {
+            output.confirmed[stateKey] += 1;
+            if (output.bySymptoms[startOfSymptomsKey]) {
+              output.bySymptoms[startOfSymptomsKey][stateKey] += 1;
+            } else {
+              output.bySymptoms[startOfSymptomsKey] = utils.makeStatesObj();
+              output.bySymptoms[startOfSymptomsKey][stateKey] = 1;
+            }
+            if (isActive) {
+              output.active[stateKey] += 1;
+            }
+            if (isDeceased) {
+              output.deaths[stateKey] += 1;
+            }
+          } else if (isSuspected) {
+            output.suspected[stateKey] += 1;
+          } else if (isNotInfected) {
+            //
+          } else {
+            log(`Unknown result ${data.RESULTADO}`);
+          }
         } else {
-          output.bySymptoms[startOfSymptomsKey] = utils.makeStatesObj();
-          output.bySymptoms[startOfSymptomsKey][stateKey] = 1;
+          log(`Unknown state ${reportedState}`);
         }
-        if (isActive) {
-          output.active[stateKey] += 1;
-        }
-        if (isDeceased) {
-          output.deaths[stateKey] += 1;
-        }
-      } else if (isSuspected) {
-        output.suspected[stateKey] += 1;
-      } else if (isNotInfected) {
-        //
-      } else {
-        log(`Unknown result ${data.RESULTADO}`);
-      }
-    } else {
-      log(`Unknown state ${reportedState}`);
-    }
+      })
+      .on('error', (err) => reject(err))
+      .on('end', () => {
+        // Convert the start of symptoms map to a sorted array.
+        output.bySymptoms = Object.entries(output.bySymptoms).sort((a, b) =>
+          a[0].localeCompare(b[0])
+        );
+        log(`Finished processing csv file, heap ${availableMemory()}`);
+        resolve(output);
+      });
   });
-
-  // Convert the start of symptoms map to a sorted array.
-  output.bySymptoms = Object.entries(output.bySymptoms).sort((a, b) =>
-    a[0].localeCompare(b[0])
-  );
-
-  return output;
 }
 
 module.exports = async (log, today) => {
