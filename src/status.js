@@ -15,8 +15,8 @@ class Status {
 
   start() {
     return new Promise((resolve) => {
-      this.server = this.app.listen(3000, () => {
-        this.log(`Started status server at port ${3000}`);
+      this.server = this.app.listen(80, () => {
+        this.log(`Started status server at port ${80}`);
         return resolve(true);
       });
     });
