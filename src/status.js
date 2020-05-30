@@ -11,12 +11,13 @@ class Status {
       res.send(latest[0]);
     });
     this.server = undefined;
+    this.port = process.env.PORT || 3000;
   }
 
   start() {
     return new Promise((resolve) => {
-      this.server = this.app.listen(80, () => {
-        this.log(`Started status server at port ${80}`);
+      this.server = this.app.listen(this.port, () => {
+        this.log(`Started status server at port ${this.port}`);
         return resolve(true);
       });
     });
