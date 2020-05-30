@@ -1,10 +1,12 @@
 const express = require('express');
+const morgan = require('morgan');
 const utils = require('./utils/utils');
 
 class Status {
   constructor() {
     this.log = utils.print.sectionFn('Status', 'magenta');
     this.app = express();
+    this.app.use(morgan('combined'));
     this.app.get('/', (req, res) => {
       const { timeseries } = utils.readJSON(utils.getLatestStats());
       const latest = timeseries.slice(-1);
@@ -31,4 +33,8 @@ class Status {
   }
 }
 
-module.exports = Status;
+const server = new Status();
+server.start();
+process.on('SIGINT', () => {
+  server.stop();
+});
