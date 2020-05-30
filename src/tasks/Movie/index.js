@@ -132,7 +132,7 @@ module.exports = async (log, today, yesterday) => {
   // Execute ffmpeg to join images in a mp4 file.
   if (!dryRun) {
     await execShellCommand(
-      `cpulimit -l 30 -- ffmpeg -y -framerate 1 -pattern_type glob -i '${screenshotsPath}' -c:v libx264 -r 30 -pix_fmt yuv420p -threads 1 ${moviePath}`
+      `cpulimit -l 50 -- ffmpeg -y -framerate 1 -pattern_type glob -i '${screenshotsPath}' -c:v libx264 -r 30 -pix_fmt yuv420p -threads 1 ${moviePath}`
     );
   }
   log(`Saved movie to ${moviePath}`);
