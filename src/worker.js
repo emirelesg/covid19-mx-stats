@@ -113,4 +113,10 @@ class Service {
   }
 }
 
-module.exports = Service;
+const service = new Service();
+console.clear();
+service.start();
+process.on('SIGINT', () => {
+  console.log();
+  service.stop();
+});

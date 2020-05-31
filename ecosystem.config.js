@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: 'worker',
-      script: './src/index.js',
+      script: './src/worker.js',
       env: {
         NODE_ENV: 'development'
       },
