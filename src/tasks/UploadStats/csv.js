@@ -165,7 +165,13 @@ module.exports = async (log, today) => {
     }
   }
 
-  return parseSourceCsv(log, today);
+  const data = await parseSourceCsv(log, today);
+  log(`Deleted csv file to save space`);
+
+  // Delete csv file to save space.
+  fs.unlinkSync(utils.getSourceCsvByDate(today));
+
+  return data;
 };
 
 if (!module.parent) {
