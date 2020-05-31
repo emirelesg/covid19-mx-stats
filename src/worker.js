@@ -119,4 +119,5 @@ service.start();
 process.on('SIGINT', () => {
   console.log();
   service.stop();
+  process.exit();
 });
