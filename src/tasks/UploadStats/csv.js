@@ -39,12 +39,13 @@ async function getZipUrl(log, today) {
 }
 
 function extractZip(today) {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     const zipFile = utils.getSourceZipByDate(today);
     const csvFile = utils.getSourceCsvByDate(today);
     fs.createReadStream(zipFile)
       .pipe(unzipper.ParseOne(config.source.csvRegex))
       .pipe(fs.createWriteStream(csvFile))
+      .on('error', reject)
       .on('finish', () => resolve(fs.existsSync(csvFile)));
   });
 }

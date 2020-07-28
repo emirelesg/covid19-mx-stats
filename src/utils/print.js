@@ -56,6 +56,14 @@ function error(err) {
   if (err.stack) console.log(chalk.red(err.stack.replace(err.toString(), '')));
 }
 
+function download(progress) {
+  sectionSameLine(
+    'Download',
+    chalk`Download Progress: {green ${progress}%}`,
+    'green'
+  );
+}
+
 module.exports = {
   section,
   sectionFn,
@@ -63,5 +71,6 @@ module.exports = {
   welcome,
   stats,
   wait,
-  error
+  error,
+  download
 };

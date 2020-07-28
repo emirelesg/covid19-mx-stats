@@ -31,11 +31,34 @@ function delay(ms) {
 function download(link, filepath) {
   return new Promise((resolve, reject) => {
     const writer = fs.createWriteStream(filepath);
-    axios({ url: link, method: 'GET', responseType: 'stream' })
-      .then((res) => res.data.pipe(writer))
-      .catch(reject);
-    writer.on('finish', resolve);
-    writer.on('error', reject);
+    writer.on('finish', () => {
+      console.log();
+      return writer.close(resolve);
+    });
+    writer.on('error', (err) => {
+      writer.close();
+      fs.unlink(filepath);
+      return reject(err);
+    });
+    axios({
+      url: link,
+      method: 'GET',
+      responseType: 'stream'
+    })
+      .then(({ data, headers }) => {
+        const contentLength = headers['content-length'];
+        let downloadedLength = 0;
+        data.on('data', (chunk) => {
+          downloadedLength += chunk.length;
+          print.download(Math.round((downloadedLength / contentLength) * 100));
+        });
+        return data.pipe(writer);
+      })
+      .catch((err) => {
+        writer.close();
+        fs.unlink(filepath);
+        return reject(err);
+      });
   });
 }
 
