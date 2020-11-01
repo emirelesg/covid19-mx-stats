@@ -1954,662 +1954,662 @@
     },
     {
       "date": "2020-10-29",
-      "confirmed": 787815,
-      "deaths": 84911,
-      "suspected": 164522,
-      "active": 0,
-      "tests": 1809582
+      "confirmed": 912811,
+      "deaths": 90773,
+      "suspected": 350727,
+      "active": 30210,
+      "tests": 2365584
     },
     {
       "date": "2020-10-30",
-      "confirmed": 656419,
-      "deaths": 73845,
-      "suspected": 145473,
-      "active": 0,
-      "tests": 1153522
+      "confirmed": 918811,
+      "deaths": 91289,
+      "suspected": 356536,
+      "active": 30378,
+      "tests": 2386284
     }
   ],
   "states": {
     "BS": {
       "name": "Baja California Sur",
-      "confirmed": 8299,
-      "confirmedDelta": -2255,
-      "deaths": 476,
-      "suspected": 951,
-      "active": 0,
-      "tests": 13189
+      "confirmed": 12539,
+      "confirmedDelta": 73,
+      "deaths": 605,
+      "suspected": 2481,
+      "active": 655,
+      "tests": 34336
     },
     "CDMX": {
       "name": "Ciudad de México",
-      "confirmed": 115387,
-      "confirmedDelta": -21242,
-      "deaths": 9769,
-      "suspected": 20494,
-      "active": 0,
-      "tests": 205218
+      "confirmed": 160749,
+      "confirmedDelta": 1069,
+      "deaths": 11611,
+      "suspected": 70396,
+      "active": 5572,
+      "tests": 509326
     },
     "BC": {
       "name": "Baja California",
-      "confirmed": 17884,
-      "confirmedDelta": -2600,
-      "deaths": 3438,
-      "suspected": 14733,
-      "active": 0,
-      "tests": 39089
+      "confirmed": 23018,
+      "confirmedDelta": 139,
+      "deaths": 3877,
+      "suspected": 23827,
+      "active": 531,
+      "tests": 62746
     },
     "SL": {
       "name": "San Luis Potosí",
-      "confirmed": 19273,
-      "confirmedDelta": -5457,
-      "deaths": 1486,
-      "suspected": 1498,
-      "active": 0,
-      "tests": 30322
+      "confirmed": 28598,
+      "confirmedDelta": 190,
+      "deaths": 2061,
+      "suspected": 5751,
+      "active": 839,
+      "tests": 70492
     },
     "AG": {
       "name": "Aguascalientes",
-      "confirmed": 6351,
-      "confirmedDelta": -1341,
-      "deaths": 579,
-      "suspected": 1712,
-      "active": 0,
-      "tests": 14553
+      "confirmed": 9502,
+      "confirmedDelta": 52,
+      "deaths": 816,
+      "suspected": 6551,
+      "active": 511,
+      "tests": 35617
     },
     "QR": {
       "name": "Quintana Roo",
-      "confirmed": 10229,
-      "confirmedDelta": -2136,
-      "deaths": 1491,
-      "suspected": 2322,
-      "active": 0,
-      "tests": 15967
+      "confirmed": 13432,
+      "confirmedDelta": 55,
+      "deaths": 1840,
+      "suspected": 4236,
+      "active": 243,
+      "tests": 27770
     },
     "GJ": {
       "name": "Guanajuato",
-      "confirmed": 33860,
-      "confirmedDelta": -8380,
-      "deaths": 2687,
-      "suspected": 4336,
-      "active": 0,
-      "tests": 58271
+      "confirmed": 48669,
+      "confirmedDelta": 397,
+      "deaths": 3452,
+      "suspected": 11221,
+      "active": 2225,
+      "tests": 128944
     },
     "NL": {
       "name": "Nuevo León",
-      "confirmed": 33550,
-      "confirmedDelta": -9047,
-      "deaths": 2724,
-      "suspected": 5992,
-      "active": 0,
-      "tests": 62738
+      "confirmed": 52915,
+      "confirmedDelta": 550,
+      "deaths": 3848,
+      "suspected": 16394,
+      "active": 2576,
+      "tests": 128477
     },
     "TM": {
       "name": "Tamaulipas",
-      "confirmed": 24667,
-      "confirmedDelta": -5166,
-      "deaths": 2087,
-      "suspected": 1407,
-      "active": 0,
-      "tests": 41238
+      "confirmed": 32276,
+      "confirmedDelta": 132,
+      "deaths": 2622,
+      "suspected": 7974,
+      "active": 703,
+      "tests": 81615
     },
     "CH": {
       "name": "Chihuahua",
-      "confirmed": 10937,
-      "confirmedDelta": -2202,
-      "deaths": 1430,
-      "suspected": 2503,
-      "active": 0,
-      "tests": 18351
+      "confirmed": 18079,
+      "confirmedDelta": 470,
+      "deaths": 1953,
+      "suspected": 10612,
+      "active": 481,
+      "tests": 42655
     },
     "MI": {
       "name": "Michoacán",
-      "confirmed": 18279,
-      "confirmedDelta": -3982,
-      "deaths": 1583,
-      "suspected": 921,
-      "active": 0,
-      "tests": 32080
+      "confirmed": 24837,
+      "confirmedDelta": 118,
+      "deaths": 2027,
+      "suspected": 3243,
+      "active": 462,
+      "tests": 62412
     },
     "QT": {
       "name": "Querétaro",
-      "confirmed": 7777,
-      "confirmedDelta": -1898,
-      "deaths": 874,
-      "suspected": 2004,
-      "active": 0,
-      "tests": 12900
+      "confirmed": 13729,
+      "confirmedDelta": 239,
+      "deaths": 1156,
+      "suspected": 3933,
+      "active": 1477,
+      "tests": 29528
     },
     "ZA": {
       "name": "Zacatecas",
-      "confirmed": 6093,
-      "confirmedDelta": -1766,
-      "deaths": 640,
-      "suspected": 915,
-      "active": 0,
-      "tests": 10089
+      "confirmed": 11008,
+      "confirmedDelta": 161,
+      "deaths": 943,
+      "suspected": 2178,
+      "active": 1160,
+      "tests": 24768
     },
     "CM": {
       "name": "Campeche",
-      "confirmed": 5253,
-      "confirmedDelta": -837,
-      "deaths": 719,
-      "suspected": 1954,
-      "active": 0,
-      "tests": 9729
+      "confirmed": 6477,
+      "confirmedDelta": 12,
+      "deaths": 854,
+      "suspected": 3847,
+      "active": 58,
+      "tests": 18869
     },
     "CO": {
       "name": "Coahuila",
-      "confirmed": 22019,
-      "confirmedDelta": -5574,
-      "deaths": 1650,
-      "suspected": 3644,
-      "active": 0,
-      "tests": 41751
+      "confirmed": 33803,
+      "confirmedDelta": 562,
+      "deaths": 2370,
+      "suspected": 9954,
+      "active": 2123,
+      "tests": 86972
     },
     "GR": {
       "name": "Guerrero",
-      "confirmed": 16805,
-      "confirmedDelta": -3290,
-      "deaths": 1935,
-      "suspected": 1444,
-      "active": 0,
-      "tests": 23103
+      "confirmed": 22124,
+      "confirmedDelta": 55,
+      "deaths": 2250,
+      "suspected": 2791,
+      "active": 349,
+      "tests": 40865
     },
     "TL": {
       "name": "Tlaxcala",
-      "confirmed": 6609,
-      "confirmedDelta": -1241,
-      "deaths": 1008,
-      "suspected": 787,
-      "active": 0,
-      "tests": 12627
+      "confirmed": 8458,
+      "confirmedDelta": 25,
+      "deaths": 1220,
+      "suspected": 1550,
+      "active": 165,
+      "tests": 25844
     },
     "VE": {
       "name": "Veracruz",
-      "confirmed": 28952,
-      "confirmedDelta": -5520,
-      "deaths": 4106,
-      "suspected": 4629,
-      "active": 0,
-      "tests": 41524
+      "confirmed": 36965,
+      "confirmedDelta": 55,
+      "deaths": 4925,
+      "suspected": 9714,
+      "active": 396,
+      "tests": 69831
     },
     "CS": {
       "name": "Chiapas",
-      "confirmed": 6212,
-      "confirmedDelta": -414,
-      "deaths": 1044,
-      "suspected": 15784,
-      "active": 0,
-      "tests": 24384
+      "confirmed": 7529,
+      "confirmedDelta": 12,
+      "deaths": 1146,
+      "suspected": 26761,
+      "active": 39,
+      "tests": 40510
     },
     "DG": {
       "name": "Durango",
-      "confirmed": 7637,
-      "confirmedDelta": -1862,
-      "deaths": 586,
-      "suspected": 1172,
-      "active": 0,
-      "tests": 14327
+      "confirmed": 13826,
+      "confirmedDelta": 209,
+      "deaths": 807,
+      "suspected": 4372,
+      "active": 1553,
+      "tests": 37809
     },
     "HG": {
       "name": "Hidalgo",
-      "confirmed": 10900,
-      "confirmedDelta": -2379,
-      "deaths": 1784,
-      "suspected": 1540,
-      "active": 0,
-      "tests": 16309
+      "confirmed": 15703,
+      "confirmedDelta": 102,
+      "deaths": 2283,
+      "suspected": 3637,
+      "active": 652,
+      "tests": 31320
     },
     "JA": {
       "name": "Jalisco",
-      "confirmed": 23329,
-      "confirmedDelta": -5320,
-      "deaths": 3002,
-      "suspected": 7506,
-      "active": 0,
-      "tests": 49656
+      "confirmed": 34082,
+      "confirmedDelta": 225,
+      "deaths": 4051,
+      "suspected": 16777,
+      "active": 1509,
+      "tests": 95308
     },
     "MO": {
       "name": "Morelos",
-      "confirmed": 5435,
-      "confirmedDelta": -733,
-      "deaths": 1043,
-      "suspected": 2326,
-      "active": 0,
-      "tests": 10916
+      "confirmed": 6885,
+      "confirmedDelta": 43,
+      "deaths": 1190,
+      "suspected": 4310,
+      "active": 187,
+      "tests": 19462
     },
     "NA": {
       "name": "Nayarit",
-      "confirmed": 5030,
-      "confirmedDelta": -1078,
-      "deaths": 675,
-      "suspected": 1408,
-      "active": 0,
-      "tests": 8595
+      "confirmed": 6707,
+      "confirmedDelta": 33,
+      "deaths": 864,
+      "suspected": 4879,
+      "active": 119,
+      "tests": 16686
     },
     "SI": {
       "name": "Sinaloa",
-      "confirmed": 17178,
-      "confirmedDelta": -2508,
-      "deaths": 3080,
-      "suspected": 4299,
-      "active": 0,
-      "tests": 28750
+      "confirmed": 21818,
+      "confirmedDelta": 73,
+      "deaths": 3595,
+      "suspected": 8312,
+      "active": 428,
+      "tests": 48448
     },
     "TB": {
       "name": "Tabasco",
-      "confirmed": 27421,
-      "confirmedDelta": -5016,
-      "deaths": 2519,
-      "suspected": 3564,
-      "active": 0,
-      "tests": 43774
+      "confirmed": 34425,
+      "confirmedDelta": 69,
+      "deaths": 2967,
+      "suspected": 6612,
+      "active": 579,
+      "tests": 83591
     },
     "YU": {
       "name": "Yucatán",
-      "confirmed": 15037,
-      "confirmedDelta": -3722,
-      "deaths": 1416,
-      "suspected": 2191,
-      "active": 0,
-      "tests": 23556
+      "confirmed": 21513,
+      "confirmedDelta": 56,
+      "deaths": 1764,
+      "suspected": 6012,
+      "active": 904,
+      "tests": 49491
     },
     "CL": {
       "name": "Colima",
-      "confirmed": 4056,
-      "confirmedDelta": -1229,
-      "deaths": 484,
-      "suspected": 969,
-      "active": 0,
-      "tests": 6049
+      "confirmed": 6540,
+      "confirmedDelta": 54,
+      "deaths": 697,
+      "suspected": 2038,
+      "active": 196,
+      "tests": 13149
     },
     "MX": {
       "name": "México",
-      "confirmed": 76510,
-      "confirmedDelta": -12292,
-      "deaths": 11610,
-      "suspected": 24150,
-      "active": 0,
-      "tests": 144300
+      "confirmed": 97784,
+      "confirmedDelta": 315,
+      "deaths": 13940,
+      "suspected": 56895,
+      "active": 1732,
+      "tests": 279219
     },
     "OA": {
       "name": "Oaxaca",
-      "confirmed": 15303,
-      "confirmedDelta": -2905,
-      "deaths": 1386,
-      "suspected": 1548,
-      "active": 0,
-      "tests": 20538
+      "confirmed": 21191,
+      "confirmedDelta": 179,
+      "deaths": 1699,
+      "suspected": 3455,
+      "active": 643,
+      "tests": 33802
     },
     "PU": {
       "name": "Puebla",
-      "confirmed": 27381,
-      "confirmedDelta": -4893,
-      "deaths": 3815,
-      "suspected": 4002,
-      "active": 0,
-      "tests": 45069
+      "confirmed": 35547,
+      "confirmedDelta": 89,
+      "deaths": 4730,
+      "suspected": 10291,
+      "active": 736,
+      "tests": 87132
     },
     "SO": {
       "name": "Sonora",
-      "confirmed": 22766,
-      "confirmedDelta": -3111,
-      "deaths": 2719,
-      "suspected": 2768,
-      "active": 0,
-      "tests": 34560
+      "confirmed": 38083,
+      "confirmedDelta": 187,
+      "deaths": 3126,
+      "suspected": 5532,
+      "active": 575,
+      "tests": 69290
     }
   },
   "statesAsArray": [
     {
       "key": "BS",
       "name": "Baja California Sur",
-      "confirmed": 8299,
-      "confirmedDelta": -2255,
-      "deaths": 476,
-      "suspected": 951,
-      "active": 0,
-      "tests": 13189,
+      "confirmed": 12539,
+      "confirmedDelta": 73,
+      "deaths": 605,
+      "suspected": 2481,
+      "active": 655,
+      "tests": 34336,
       "date": "2020-10-30"
     },
     {
       "key": "CDMX",
       "name": "Ciudad de México",
-      "confirmed": 115387,
-      "confirmedDelta": -21242,
-      "deaths": 9769,
-      "suspected": 20494,
-      "active": 0,
-      "tests": 205218,
+      "confirmed": 160749,
+      "confirmedDelta": 1069,
+      "deaths": 11611,
+      "suspected": 70396,
+      "active": 5572,
+      "tests": 509326,
       "date": "2020-10-30"
     },
     {
       "key": "BC",
       "name": "Baja California",
-      "confirmed": 17884,
-      "confirmedDelta": -2600,
-      "deaths": 3438,
-      "suspected": 14733,
-      "active": 0,
-      "tests": 39089,
+      "confirmed": 23018,
+      "confirmedDelta": 139,
+      "deaths": 3877,
+      "suspected": 23827,
+      "active": 531,
+      "tests": 62746,
       "date": "2020-10-30"
     },
     {
       "key": "SL",
       "name": "San Luis Potosí",
-      "confirmed": 19273,
-      "confirmedDelta": -5457,
-      "deaths": 1486,
-      "suspected": 1498,
-      "active": 0,
-      "tests": 30322,
+      "confirmed": 28598,
+      "confirmedDelta": 190,
+      "deaths": 2061,
+      "suspected": 5751,
+      "active": 839,
+      "tests": 70492,
       "date": "2020-10-30"
     },
     {
       "key": "AG",
       "name": "Aguascalientes",
-      "confirmed": 6351,
-      "confirmedDelta": -1341,
-      "deaths": 579,
-      "suspected": 1712,
-      "active": 0,
-      "tests": 14553,
+      "confirmed": 9502,
+      "confirmedDelta": 52,
+      "deaths": 816,
+      "suspected": 6551,
+      "active": 511,
+      "tests": 35617,
       "date": "2020-10-30"
     },
     {
       "key": "QR",
       "name": "Quintana Roo",
-      "confirmed": 10229,
-      "confirmedDelta": -2136,
-      "deaths": 1491,
-      "suspected": 2322,
-      "active": 0,
-      "tests": 15967,
+      "confirmed": 13432,
+      "confirmedDelta": 55,
+      "deaths": 1840,
+      "suspected": 4236,
+      "active": 243,
+      "tests": 27770,
       "date": "2020-10-30"
     },
     {
       "key": "GJ",
       "name": "Guanajuato",
-      "confirmed": 33860,
-      "confirmedDelta": -8380,
-      "deaths": 2687,
-      "suspected": 4336,
-      "active": 0,
-      "tests": 58271,
+      "confirmed": 48669,
+      "confirmedDelta": 397,
+      "deaths": 3452,
+      "suspected": 11221,
+      "active": 2225,
+      "tests": 128944,
       "date": "2020-10-30"
     },
     {
       "key": "NL",
       "name": "Nuevo León",
-      "confirmed": 33550,
-      "confirmedDelta": -9047,
-      "deaths": 2724,
-      "suspected": 5992,
-      "active": 0,
-      "tests": 62738,
+      "confirmed": 52915,
+      "confirmedDelta": 550,
+      "deaths": 3848,
+      "suspected": 16394,
+      "active": 2576,
+      "tests": 128477,
       "date": "2020-10-30"
     },
     {
       "key": "TM",
       "name": "Tamaulipas",
-      "confirmed": 24667,
-      "confirmedDelta": -5166,
-      "deaths": 2087,
-      "suspected": 1407,
-      "active": 0,
-      "tests": 41238,
+      "confirmed": 32276,
+      "confirmedDelta": 132,
+      "deaths": 2622,
+      "suspected": 7974,
+      "active": 703,
+      "tests": 81615,
       "date": "2020-10-30"
     },
     {
       "key": "CH",
       "name": "Chihuahua",
-      "confirmed": 10937,
-      "confirmedDelta": -2202,
-      "deaths": 1430,
-      "suspected": 2503,
-      "active": 0,
-      "tests": 18351,
+      "confirmed": 18079,
+      "confirmedDelta": 470,
+      "deaths": 1953,
+      "suspected": 10612,
+      "active": 481,
+      "tests": 42655,
       "date": "2020-10-30"
     },
     {
       "key": "MI",
       "name": "Michoacán",
-      "confirmed": 18279,
-      "confirmedDelta": -3982,
-      "deaths": 1583,
-      "suspected": 921,
-      "active": 0,
-      "tests": 32080,
+      "confirmed": 24837,
+      "confirmedDelta": 118,
+      "deaths": 2027,
+      "suspected": 3243,
+      "active": 462,
+      "tests": 62412,
       "date": "2020-10-30"
     },
     {
       "key": "QT",
       "name": "Querétaro",
-      "confirmed": 7777,
-      "confirmedDelta": -1898,
-      "deaths": 874,
-      "suspected": 2004,
-      "active": 0,
-      "tests": 12900,
+      "confirmed": 13729,
+      "confirmedDelta": 239,
+      "deaths": 1156,
+      "suspected": 3933,
+      "active": 1477,
+      "tests": 29528,
       "date": "2020-10-30"
     },
     {
       "key": "ZA",
       "name": "Zacatecas",
-      "confirmed": 6093,
-      "confirmedDelta": -1766,
-      "deaths": 640,
-      "suspected": 915,
-      "active": 0,
-      "tests": 10089,
+      "confirmed": 11008,
+      "confirmedDelta": 161,
+      "deaths": 943,
+      "suspected": 2178,
+      "active": 1160,
+      "tests": 24768,
       "date": "2020-10-30"
     },
     {
       "key": "CM",
       "name": "Campeche",
-      "confirmed": 5253,
-      "confirmedDelta": -837,
-      "deaths": 719,
-      "suspected": 1954,
-      "active": 0,
-      "tests": 9729,
+      "confirmed": 6477,
+      "confirmedDelta": 12,
+      "deaths": 854,
+      "suspected": 3847,
+      "active": 58,
+      "tests": 18869,
       "date": "2020-10-30"
     },
     {
       "key": "CO",
       "name": "Coahuila",
-      "confirmed": 22019,
-      "confirmedDelta": -5574,
-      "deaths": 1650,
-      "suspected": 3644,
-      "active": 0,
-      "tests": 41751,
+      "confirmed": 33803,
+      "confirmedDelta": 562,
+      "deaths": 2370,
+      "suspected": 9954,
+      "active": 2123,
+      "tests": 86972,
       "date": "2020-10-30"
     },
     {
       "key": "GR",
       "name": "Guerrero",
-      "confirmed": 16805,
-      "confirmedDelta": -3290,
-      "deaths": 1935,
-      "suspected": 1444,
-      "active": 0,
-      "tests": 23103,
+      "confirmed": 22124,
+      "confirmedDelta": 55,
+      "deaths": 2250,
+      "suspected": 2791,
+      "active": 349,
+      "tests": 40865,
       "date": "2020-10-30"
     },
     {
       "key": "TL",
       "name": "Tlaxcala",
-      "confirmed": 6609,
-      "confirmedDelta": -1241,
-      "deaths": 1008,
-      "suspected": 787,
-      "active": 0,
-      "tests": 12627,
+      "confirmed": 8458,
+      "confirmedDelta": 25,
+      "deaths": 1220,
+      "suspected": 1550,
+      "active": 165,
+      "tests": 25844,
       "date": "2020-10-30"
     },
     {
       "key": "VE",
       "name": "Veracruz",
-      "confirmed": 28952,
-      "confirmedDelta": -5520,
-      "deaths": 4106,
-      "suspected": 4629,
-      "active": 0,
-      "tests": 41524,
+      "confirmed": 36965,
+      "confirmedDelta": 55,
+      "deaths": 4925,
+      "suspected": 9714,
+      "active": 396,
+      "tests": 69831,
       "date": "2020-10-30"
     },
     {
       "key": "CS",
       "name": "Chiapas",
-      "confirmed": 6212,
-      "confirmedDelta": -414,
-      "deaths": 1044,
-      "suspected": 15784,
-      "active": 0,
-      "tests": 24384,
+      "confirmed": 7529,
+      "confirmedDelta": 12,
+      "deaths": 1146,
+      "suspected": 26761,
+      "active": 39,
+      "tests": 40510,
       "date": "2020-10-30"
     },
     {
       "key": "DG",
       "name": "Durango",
-      "confirmed": 7637,
-      "confirmedDelta": -1862,
-      "deaths": 586,
-      "suspected": 1172,
-      "active": 0,
-      "tests": 14327,
+      "confirmed": 13826,
+      "confirmedDelta": 209,
+      "deaths": 807,
+      "suspected": 4372,
+      "active": 1553,
+      "tests": 37809,
       "date": "2020-10-30"
     },
     {
       "key": "HG",
       "name": "Hidalgo",
-      "confirmed": 10900,
-      "confirmedDelta": -2379,
-      "deaths": 1784,
-      "suspected": 1540,
-      "active": 0,
-      "tests": 16309,
+      "confirmed": 15703,
+      "confirmedDelta": 102,
+      "deaths": 2283,
+      "suspected": 3637,
+      "active": 652,
+      "tests": 31320,
       "date": "2020-10-30"
     },
     {
       "key": "JA",
       "name": "Jalisco",
-      "confirmed": 23329,
-      "confirmedDelta": -5320,
-      "deaths": 3002,
-      "suspected": 7506,
-      "active": 0,
-      "tests": 49656,
+      "confirmed": 34082,
+      "confirmedDelta": 225,
+      "deaths": 4051,
+      "suspected": 16777,
+      "active": 1509,
+      "tests": 95308,
       "date": "2020-10-30"
     },
     {
       "key": "MO",
       "name": "Morelos",
-      "confirmed": 5435,
-      "confirmedDelta": -733,
-      "deaths": 1043,
-      "suspected": 2326,
-      "active": 0,
-      "tests": 10916,
+      "confirmed": 6885,
+      "confirmedDelta": 43,
+      "deaths": 1190,
+      "suspected": 4310,
+      "active": 187,
+      "tests": 19462,
       "date": "2020-10-30"
     },
     {
       "key": "NA",
       "name": "Nayarit",
-      "confirmed": 5030,
-      "confirmedDelta": -1078,
-      "deaths": 675,
-      "suspected": 1408,
-      "active": 0,
-      "tests": 8595,
+      "confirmed": 6707,
+      "confirmedDelta": 33,
+      "deaths": 864,
+      "suspected": 4879,
+      "active": 119,
+      "tests": 16686,
       "date": "2020-10-30"
     },
     {
       "key": "SI",
       "name": "Sinaloa",
-      "confirmed": 17178,
-      "confirmedDelta": -2508,
-      "deaths": 3080,
-      "suspected": 4299,
-      "active": 0,
-      "tests": 28750,
+      "confirmed": 21818,
+      "confirmedDelta": 73,
+      "deaths": 3595,
+      "suspected": 8312,
+      "active": 428,
+      "tests": 48448,
       "date": "2020-10-30"
     },
     {
       "key": "TB",
       "name": "Tabasco",
-      "confirmed": 27421,
-      "confirmedDelta": -5016,
-      "deaths": 2519,
-      "suspected": 3564,
-      "active": 0,
-      "tests": 43774,
+      "confirmed": 34425,
+      "confirmedDelta": 69,
+      "deaths": 2967,
+      "suspected": 6612,
+      "active": 579,
+      "tests": 83591,
       "date": "2020-10-30"
     },
     {
       "key": "YU",
       "name": "Yucatán",
-      "confirmed": 15037,
-      "confirmedDelta": -3722,
-      "deaths": 1416,
-      "suspected": 2191,
-      "active": 0,
-      "tests": 23556,
+      "confirmed": 21513,
+      "confirmedDelta": 56,
+      "deaths": 1764,
+      "suspected": 6012,
+      "active": 904,
+      "tests": 49491,
       "date": "2020-10-30"
     },
     {
       "key": "CL",
       "name": "Colima",
-      "confirmed": 4056,
-      "confirmedDelta": -1229,
-      "deaths": 484,
-      "suspected": 969,
-      "active": 0,
-      "tests": 6049,
+      "confirmed": 6540,
+      "confirmedDelta": 54,
+      "deaths": 697,
+      "suspected": 2038,
+      "active": 196,
+      "tests": 13149,
       "date": "2020-10-30"
     },
     {
       "key": "MX",
       "name": "México",
-      "confirmed": 76510,
-      "confirmedDelta": -12292,
-      "deaths": 11610,
-      "suspected": 24150,
-      "active": 0,
-      "tests": 144300,
+      "confirmed": 97784,
+      "confirmedDelta": 315,
+      "deaths": 13940,
+      "suspected": 56895,
+      "active": 1732,
+      "tests": 279219,
       "date": "2020-10-30"
     },
     {
       "key": "OA",
       "name": "Oaxaca",
-      "confirmed": 15303,
-      "confirmedDelta": -2905,
-      "deaths": 1386,
-      "suspected": 1548,
-      "active": 0,
-      "tests": 20538,
+      "confirmed": 21191,
+      "confirmedDelta": 179,
+      "deaths": 1699,
+      "suspected": 3455,
+      "active": 643,
+      "tests": 33802,
       "date": "2020-10-30"
     },
     {
       "key": "PU",
       "name": "Puebla",
-      "confirmed": 27381,
-      "confirmedDelta": -4893,
-      "deaths": 3815,
-      "suspected": 4002,
-      "active": 0,
-      "tests": 45069,
+      "confirmed": 35547,
+      "confirmedDelta": 89,
+      "deaths": 4730,
+      "suspected": 10291,
+      "active": 736,
+      "tests": 87132,
       "date": "2020-10-30"
     },
     {
       "key": "SO",
       "name": "Sonora",
-      "confirmed": 22766,
-      "confirmedDelta": -3111,
-      "deaths": 2719,
-      "suspected": 2768,
-      "active": 0,
-      "tests": 34560,
+      "confirmed": 38083,
+      "confirmedDelta": 187,
+      "deaths": 3126,
+      "suspected": 5532,
+      "active": 575,
+      "tests": 69290,
       "date": "2020-10-30"
     }
   ],
@@ -3160,367 +3160,487 @@
     },
     {
       "date": "2020-07-01",
-      "cases": 5955
+      "cases": 8509
     },
     {
       "date": "2020-07-02",
-      "cases": 4375
+      "cases": 6201
     },
     {
       "date": "2020-07-03",
-      "cases": 4714
+      "cases": 6654
     },
     {
       "date": "2020-07-04",
-      "cases": 4123
+      "cases": 5789
     },
     {
       "date": "2020-07-05",
-      "cases": 4494
+      "cases": 6407
     },
     {
       "date": "2020-07-06",
-      "cases": 5026
+      "cases": 7072
     },
     {
       "date": "2020-07-07",
-      "cases": 4500
+      "cases": 6484
     },
     {
       "date": "2020-07-08",
-      "cases": 4143
+      "cases": 5936
     },
     {
       "date": "2020-07-09",
-      "cases": 4270
+      "cases": 6092
     },
     {
       "date": "2020-07-10",
-      "cases": 6590
+      "cases": 9385
     },
     {
       "date": "2020-07-11",
-      "cases": 4215
+      "cases": 5978
     },
     {
       "date": "2020-07-12",
-      "cases": 4402
+      "cases": 6300
     },
     {
       "date": "2020-07-13",
-      "cases": 5278
+      "cases": 7609
     },
     {
       "date": "2020-07-14",
-      "cases": 4423
+      "cases": 6365
     },
     {
       "date": "2020-07-15",
-      "cases": 5608
+      "cases": 8029
     },
     {
       "date": "2020-07-16",
-      "cases": 4495
+      "cases": 6398
     },
     {
       "date": "2020-07-17",
-      "cases": 4998
+      "cases": 7169
     },
     {
       "date": "2020-07-18",
-      "cases": 5073
+      "cases": 7139
     },
     {
       "date": "2020-07-19",
-      "cases": 4478
+      "cases": 6401
     },
     {
       "date": "2020-07-20",
-      "cases": 6984
+      "cases": 9789
     },
     {
       "date": "2020-07-21",
-      "cases": 4141
+      "cases": 5982
     },
     {
       "date": "2020-07-22",
-      "cases": 4154
+      "cases": 5882
     },
     {
       "date": "2020-07-23",
-      "cases": 4087
+      "cases": 5811
     },
     {
       "date": "2020-07-24",
-      "cases": 4373
+      "cases": 6330
     },
     {
       "date": "2020-07-25",
-      "cases": 5102
+      "cases": 7391
     },
     {
       "date": "2020-07-26",
-      "cases": 3869
+      "cases": 5628
     },
     {
       "date": "2020-07-27",
-      "cases": 4965
+      "cases": 7243
     },
     {
       "date": "2020-07-28",
-      "cases": 4118
+      "cases": 5940
     },
     {
       "date": "2020-07-29",
-      "cases": 3535
+      "cases": 5112
     },
     {
       "date": "2020-07-30",
-      "cases": 3614
+      "cases": 5218
     },
     {
       "date": "2020-07-31",
-      "cases": 3870
+      "cases": 5507
     },
     {
       "date": "2020-08-01",
-      "cases": 5599
+      "cases": 8156
     },
     {
       "date": "2020-08-02",
-      "cases": 3656
+      "cases": 5203
     },
     {
       "date": "2020-08-03",
-      "cases": 4387
+      "cases": 6265
     },
     {
       "date": "2020-08-04",
-      "cases": 3421
+      "cases": 4837
     },
     {
       "date": "2020-08-05",
-      "cases": 3916
+      "cases": 5589
     },
     {
       "date": "2020-08-06",
-      "cases": 3382
+      "cases": 4844
     },
     {
       "date": "2020-08-07",
-      "cases": 3718
+      "cases": 5309
     },
     {
       "date": "2020-08-08",
-      "cases": 3862
+      "cases": 5521
     },
     {
       "date": "2020-08-09",
-      "cases": 3190
+      "cases": 4554
     },
     {
       "date": "2020-08-10",
-      "cases": 5294
+      "cases": 7714
     },
     {
       "date": "2020-08-11",
-      "cases": 3295
+      "cases": 4796
     },
     {
       "date": "2020-08-12",
-      "cases": 3338
+      "cases": 4816
     },
     {
       "date": "2020-08-13",
-      "cases": 3297
+      "cases": 4692
     },
     {
       "date": "2020-08-14",
-      "cases": 3825
+      "cases": 5388
     },
     {
       "date": "2020-08-15",
-      "cases": 4072
+      "cases": 5822
     },
     {
       "date": "2020-08-16",
-      "cases": 3247
+      "cases": 4548
     },
     {
       "date": "2020-08-17",
-      "cases": 4021
+      "cases": 5655
     },
     {
       "date": "2020-08-18",
-      "cases": 4037
+      "cases": 5687
     },
     {
       "date": "2020-08-19",
-      "cases": 3255
+      "cases": 4675
     },
     {
       "date": "2020-08-20",
-      "cases": 5140
+      "cases": 7383
     },
     {
       "date": "2020-08-21",
-      "cases": 3595
+      "cases": 5090
     },
     {
       "date": "2020-08-22",
-      "cases": 3445
+      "cases": 4840
     },
     {
       "date": "2020-08-23",
-      "cases": 3193
+      "cases": 4484
     },
     {
       "date": "2020-08-24",
-      "cases": 4189
+      "cases": 5878
     },
     {
       "date": "2020-08-25",
-      "cases": 4088
+      "cases": 5733
     },
     {
       "date": "2020-08-26",
-      "cases": 3364
+      "cases": 4776
     },
     {
       "date": "2020-08-27",
-      "cases": 3459
+      "cases": 4835
     },
     {
       "date": "2020-08-28",
-      "cases": 4313
+      "cases": 6048
     },
     {
       "date": "2020-08-29",
-      "cases": 3090
+      "cases": 4349
     },
     {
       "date": "2020-08-30",
-      "cases": 3430
+      "cases": 4775
     },
     {
       "date": "2020-08-31",
-      "cases": 3966
+      "cases": 5543
     },
     {
       "date": "2020-09-01",
-      "cases": 4893
+      "cases": 6993
     },
     {
       "date": "2020-09-02",
-      "cases": 3351
+      "cases": 4754
     },
     {
       "date": "2020-09-03",
-      "cases": 3233
+      "cases": 4547
     },
     {
       "date": "2020-09-04",
-      "cases": 3283
+      "cases": 4684
     },
     {
       "date": "2020-09-05",
-      "cases": 3604
+      "cases": 5020
     },
     {
       "date": "2020-09-06",
-      "cases": 2923
+      "cases": 4063
     },
     {
       "date": "2020-09-07",
-      "cases": 3592
+      "cases": 5035
     },
     {
       "date": "2020-09-08",
-      "cases": 3213
+      "cases": 4507
     },
     {
       "date": "2020-09-09",
-      "cases": 3037
+      "cases": 4226
     },
     {
       "date": "2020-09-10",
-      "cases": 3824
+      "cases": 5349
     },
     {
       "date": "2020-09-11",
-      "cases": 2929
+      "cases": 4124
     },
     {
       "date": "2020-09-12",
-      "cases": 2518
-    },
-    {
-      "date": "2020-09-13",
-      "cases": 2362
-    },
-    {
-      "date": "2020-09-14",
-      "cases": 3320
-    },
-    {
-      "date": "2020-09-15",
-      "cases": 3488
-    },
-    {
-      "date": "2020-09-16",
-      "cases": 2553
-    },
-    {
-      "date": "2020-09-17",
-      "cases": 3083
-    },
-    {
-      "date": "2020-09-18",
       "cases": 3515
     },
     {
+      "date": "2020-09-13",
+      "cases": 3350
+    },
+    {
+      "date": "2020-09-14",
+      "cases": 4623
+    },
+    {
+      "date": "2020-09-15",
+      "cases": 4912
+    },
+    {
+      "date": "2020-09-16",
+      "cases": 3565
+    },
+    {
+      "date": "2020-09-17",
+      "cases": 4302
+    },
+    {
+      "date": "2020-09-18",
+      "cases": 4870
+    },
+    {
       "date": "2020-09-19",
-      "cases": 3251
+      "cases": 4619
     },
     {
       "date": "2020-09-20",
-      "cases": 4086
+      "cases": 5701
     },
     {
       "date": "2020-09-21",
-      "cases": 3437
+      "cases": 4805
     },
     {
       "date": "2020-09-22",
-      "cases": 2911
+      "cases": 4077
     },
     {
       "date": "2020-09-23",
-      "cases": 2818
+      "cases": 3924
     },
     {
       "date": "2020-09-24",
-      "cases": 2809
+      "cases": 3890
     },
     {
       "date": "2020-09-25",
-      "cases": 3607
+      "cases": 5045
     },
     {
       "date": "2020-09-26",
-      "cases": 2844
+      "cases": 3948
     },
     {
       "date": "2020-09-27",
-      "cases": 2807
+      "cases": 3918
     },
     {
       "date": "2020-09-28",
-      "cases": 3584
+      "cases": 4963
     },
     {
       "date": "2020-09-29",
-      "cases": 3018
+      "cases": 4245
+    },
+    {
+      "date": "2020-09-30",
+      "cases": 4203
+    },
+    {
+      "date": "2020-10-01",
+      "cases": 5951
+    },
+    {
+      "date": "2020-10-02",
+      "cases": 4526
+    },
+    {
+      "date": "2020-10-03",
+      "cases": 4080
+    },
+    {
+      "date": "2020-10-04",
+      "cases": 3884
+    },
+    {
+      "date": "2020-10-05",
+      "cases": 5652
+    },
+    {
+      "date": "2020-10-06",
+      "cases": 4391
+    },
+    {
+      "date": "2020-10-07",
+      "cases": 4609
+    },
+    {
+      "date": "2020-10-08",
+      "cases": 4641
+    },
+    {
+      "date": "2020-10-09",
+      "cases": 4865
+    },
+    {
+      "date": "2020-10-10",
+      "cases": 6693
+    },
+    {
+      "date": "2020-10-11",
+      "cases": 4308
+    },
+    {
+      "date": "2020-10-12",
+      "cases": 5783
+    },
+    {
+      "date": "2020-10-13",
+      "cases": 4745
+    },
+    {
+      "date": "2020-10-14",
+      "cases": 4359
+    },
+    {
+      "date": "2020-10-15",
+      "cases": 5303
+    },
+    {
+      "date": "2020-10-16",
+      "cases": 4841
+    },
+    {
+      "date": "2020-10-17",
+      "cases": 4182
+    },
+    {
+      "date": "2020-10-18",
+      "cases": 4525
+    },
+    {
+      "date": "2020-10-19",
+      "cases": 5228
+    },
+    {
+      "date": "2020-10-20",
+      "cases": 4787
+    },
+    {
+      "date": "2020-10-21",
+      "cases": 2893
+    },
+    {
+      "date": "2020-10-22",
+      "cases": 2683
+    },
+    {
+      "date": "2020-10-23",
+      "cases": 2111
+    },
+    {
+      "date": "2020-10-24",
+      "cases": 1491
+    },
+    {
+      "date": "2020-10-25",
+      "cases": 1202
+    },
+    {
+      "date": "2020-10-26",
+      "cases": 850
+    },
+    {
+      "date": "2020-10-27",
+      "cases": 308
+    },
+    {
+      "date": "2020-10-28",
+      "cases": 102
+    },
+    {
+      "date": "2020-10-29",
+      "cases": 16
     }
   ]
 }
