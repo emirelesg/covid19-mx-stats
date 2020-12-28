@@ -2338,11 +2338,11 @@
     },
     {
       "date": "2020-12-16",
-      "confirmed": 301908,
-      "deaths": 44235,
-      "suspected": 144005,
-      "active": 0,
-      "tests": 797473
+      "confirmed": 1277499,
+      "deaths": 115769,
+      "suspected": 397784,
+      "active": 62961,
+      "tests": 3269134
     },
     {
       "date": "2020-12-17",
