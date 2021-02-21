@@ -26,7 +26,7 @@ class Service {
     this.today = undefined;
     this.yesterday = undefined;
     this.retries = 0;
-    this.mainJobInterval = '59 18 * * *';
+    this.mainJobInterval = '00 21 * * *';
     this.waitJobInterval = '* * * * * *';
     this.mainJob = schedule.scheduleJob(
       this.mainJobInterval,

@@ -53,6 +53,7 @@ function extractZip(today) {
 function parseSourceCsv(log, today) {
   const activeThresh = today.clone().subtract('14', 'days');
   const residenceThresh = moment('2020-04-21');
+  const keyChangeThresh = moment('2020-10-07');
   const output = {
     confirmed: utils.makeStatesObj(),
     deaths: utils.makeStatesObj(),
@@ -77,11 +78,24 @@ function parseSourceCsv(log, today) {
         const stateKey = config.stateKeys[parseInt(reportedState, 10)];
 
         // Status of the patient.
-        const result = parseInt(data.RESULTADO, 10);
-        const isInfected = result === 1;
-        const isNotInfected = result === 2;
-        const isSuspected = result === 3;
-        const isDeceased = data.FECHA_DEF !== '9999-99-99';
+        let result;
+        let isInfected;
+        let isNotInfected;
+        let isSuspected;
+        let isDeceased;
+        if (today.isSameOrAfter(keyChangeThresh)) {
+          result = parseInt(data.CLASIFICACION_FINAL, 10);
+          isInfected = result === 1 || result === 2 || result === 3;
+          isNotInfected = result === 7;
+          isSuspected = result === 6 || result === 5 || result === 4;
+          isDeceased = data.FECHA_DEF !== '9999-99-99';
+        } else {
+          result = parseInt(data.RESULTADO, 10);
+          isInfected = result === 1;
+          isNotInfected = result === 2;
+          isSuspected = result === 3;
+          isDeceased = data.FECHA_DEF !== '9999-99-99';
+        }
 
         // Start of Symptoms
         const startOfSymptoms = moment(data.FECHA_SINTOMAS);
