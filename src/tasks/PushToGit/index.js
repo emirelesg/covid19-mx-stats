@@ -28,7 +28,7 @@ module.exports = async (log, date) => {
     .filter(
       (f, i, arr) =>
         (f.path.match(dirRegex) || latestFIles.indexOf(f.path) > -1) &&
-        arr.indexOf(f) === i && !(/\.zip$/.test(f.path))
+        arr.indexOf(f) === i
     )
     .map((f) => f.path);
 

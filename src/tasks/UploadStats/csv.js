@@ -185,6 +185,7 @@ module.exports = async (log, today) => {
 
   // Delete csv file to save space.
   fs.unlinkSync(utils.getSourceCsvByDate(today));
+  fs.unlinkSync(utils.getSourceZipByDate(today));
 
   return data;
 };
