@@ -23,6 +23,7 @@ class Service {
         });
       }
     });
+    this.redisClient.on('error', (err) => this.log(err.message));
     this.today = undefined;
     this.yesterday = undefined;
     this.retries = 0;

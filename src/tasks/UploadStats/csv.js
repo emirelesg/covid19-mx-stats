@@ -148,44 +148,40 @@ module.exports = async (log, today) => {
   // Files and dirs.
   const baseDir = utils.getDirByDate(today);
   const sourceDir = utils.getSourceDirByDate(today);
+  const csvFile = utils.getSourceCsvByDate(today);
   const zipFile = utils.getSourceZipByDate(today);
 
   // Make dirs if they do not exist.
   log(`Making dir ${baseDir}`);
   utils.makeDir(baseDir);
+
   log(`Making dir ${sourceDir}`);
   utils.makeDir(sourceDir);
 
-  // Only download or extract zip if no source csv file is found.
-  if (!fs.existsSync(utils.getSourceCsvByDate(today))) {
-    log(`Source csv does not exist.`);
+  log(`Searching for zip url`);
+  const zipUrl = await getZipUrl(log, today);
+  if (!zipUrl) {
+    throw new Error(`Failed to find link to zip url with today's date.`);
+  }
 
-    // Download zip if it does not exist.
-    if (!fs.existsSync(zipFile)) {
-      log(`Source zip does not exist.`);
-      const zipUrl = await getZipUrl(log, today);
-      if (!zipUrl) {
-        throw new Error(`Failed to find link to zip url with today's date.`);
-      }
-      log(`Downloading zip file to ${zipFile}`);
-      await utils.download(zipUrl, zipFile);
-    } else {
-      log(`Source zip already exists.`);
-    }
+  log(`Downloading zip file to ${zipFile}`);
 
-    log(`Extracting zip file`);
-    const isExtracted = await extractZip(today);
-    if (!isExtracted) {
-      throw new Error(`Failed to extract source file from ${zipFile}`);
-    }
+  if (fs.existsSync(zipFile)) fs.unlinkSync(zipFile);
+  await utils.download(zipUrl, zipFile);
+
+  log(`Extracting zip file`);
+  const isExtracted = await extractZip(today);
+  if (!isExtracted) {
+    throw new Error(`Failed to extract source file from ${zipFile}`);
   }
 
   const data = await parseSourceCsv(log, today);
-  log(`Deleted csv file to save space`);
 
-  // Delete csv file to save space.
-  fs.unlinkSync(utils.getSourceCsvByDate(today));
-  fs.unlinkSync(utils.getSourceZipByDate(today));
+  log(`Deleted csv file to save space`);
+  fs.unlinkSync(csvFile);
+
+  log(`Deleted zip file to save space`);
+  fs.unlinkSync(zipFile);
 
   return data;
 };
