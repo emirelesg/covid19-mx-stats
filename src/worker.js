@@ -2,6 +2,7 @@ const schedule = require('node-schedule');
 const moment = require('moment');
 const redis = require('redis');
 const config = require('./config');
+const fs = require('fs');
 const utils = require('./utils/utils');
 const tasks = require('./tasks');
 
@@ -74,6 +75,8 @@ class Service {
       );
       this.log('All tasks completed!');
     } catch (err) {
+      const zipFile = utils.getSourceZipByDate(this.today);
+      if (this.asService && fs.existsSync(zipFile)) fs.unlinkSync(zipFile);
       this.retries += 1;
       utils.print.error(err);
       await utils.countdownPromise(config.retryTimeout);
