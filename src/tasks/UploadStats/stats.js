@@ -154,6 +154,12 @@ function compare(log, today, yesterday) {
     today:     ${JSON.stringify(latest).replace(/,/g, ', ')}`);
   }
 
+  if (Object.values(latest).some(value => value === 0)) {
+    throw new Error(`Stats contain empty values
+    today: ${JSON.stringify(latest).replace(/,/g, ', ')}`
+    );
+  }
+
   // Continue if they are different.
   log('Stats look to be different from yesterday');
   log(latest);

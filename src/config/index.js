@@ -99,15 +99,15 @@ module.exports = {
   ftpFiles: [
     {
       local: './data/latest.json',
-      remote: './covid19/api/stats.json'
+      remote: './public_html/covid19/api/stats.json'
     },
     {
       local: './data/latestByState.json',
-      remote: './covid19/api/statsByState.json'
+      remote: './public_html/covid19/api/statsByState.json'
     },
     {
       local: './data/latestBySymptoms.json',
-      remote: './covid19/api/statsBySymptoms.json'
+      remote: './public_html/covid19/api/statsBySymptoms.json'
     }
   ],
 

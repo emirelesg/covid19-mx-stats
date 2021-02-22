@@ -158,16 +158,16 @@ module.exports = async (log, today) => {
   log(`Making dir ${sourceDir}`);
   utils.makeDir(sourceDir);
 
-  log(`Searching for zip url`);
-  const zipUrl = await getZipUrl(log, today);
-  if (!zipUrl) {
-    throw new Error(`Failed to find link to zip url with today's date.`);
+  if (!fs.existsSync(zipFile)) {
+    log(`Searching for zip url`);
+    const zipUrl = await getZipUrl(log, today);
+    if (!zipUrl) {
+      throw new Error(`Failed to find link to zip url with today's date.`);
+    }
+
+    log(`Downloading zip file to ${zipFile}`);
+    await utils.download(zipUrl, zipFile);
   }
-
-  log(`Downloading zip file to ${zipFile}`);
-
-  if (fs.existsSync(zipFile)) fs.unlinkSync(zipFile);
-  await utils.download(zipUrl, zipFile);
 
   log(`Extracting zip file`);
   const isExtracted = await extractZip(today);
